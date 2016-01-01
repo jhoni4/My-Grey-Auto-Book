@@ -1,39 +1,38 @@
-<div>
+<div  style="margin-top:150px;">
  <div class="container hoverable">
-   <div class="row silver" style="color:white;">
-     <div class="col s2">
+   <div class="row" style="color:white;">
+    <div class="col s2">
       <span>Make of vehicle :</span>
-        <select id="make" class='dropdown-button btn #616161 grey darken-1' ng-model="selectedCarMake" ng-change="update()" style="color:white; overflow:auto;">
-          <option  ng-repeat="x in cars.makes" value="{{$index}}" >{{x.name}}</option>
-        </select>
-     </div>
+      <select id="make" class='dropdown-button btn pannel3' ng-model="selectedCarMake" ng-change="update()" style="color:white; overflow:auto;">
+        <option  ng-repeat="x in cars.makes" value="{{$index}}" >{{x.name}}</option>
+      </select>
+    </div>
     <div class="col s2">
       <span>Model of vehicle :</span>
-      <select id="model" class='dropdown-button btn #616161 grey M' ng-model="selectedCarModel" ng-change="update2()" ng-disabled="!selectedCarMake">
+      <select id="model" class='dropdown-button btn pannel3' ng-model="selectedCarModel" ng-change="update2()" ng-disabled="!selectedCarMake">
       <option ng-repeat="y in carModels" value="{{$index}}">{{y.name}}</option>
       </select>
     </div>
       <div class="col s2">
         <span>Year of vehicle :</span>
-        <select id="year" class='dropdown-button btn #616161 grey M' ng-model="selectedCarYear" ng-change="update()" ng-disabled="!selectedCarModel">
+        <select id="year" class='dropdown-button btn pannel3' ng-model="selectedCarYear" ng-change="update()" ng-disabled="!selectedCarModel">
         <option ng-repeat="z in carYears" value="{{$index}}">{{z.year}}</option>
         </select>
       </div>
       <div class="col s2">
         <span>Style of vehicle :</span>
-        <select id="style" class='dropdown-button btn #616161 grey M' ng-model="selectedCarStyle" ng-change="update()" ng-disabled="!selectedCarYear">
+        <select id="style" class='dropdown-button btn pannel3' ng-model="selectedCarStyle" ng-change="update()" ng-disabled="!selectedCarYear">
           <option ></option>
         <option ng-repeat="k in carstyles" value="{{k}}">{{k}}</option>
         </select>
       </div>
       <div class="col s2">
-        <button class="btn waves-effect waves-light #616161 grey M" type="submit" style="margin-top:20px;" name="action" ng-click="runSearchResult()">Search<i class="material-icons right">send</i>
+        <button class="btn waves-effect waves-light search" type="submit" style="margin-top:20px; text-shadow: -1px -1px 1px #000;" name="action" ng-click="runSearchResult()">Search<i class="material-icons right">send</i>
         </button>
       </div>
     </div>
   <div class="divider"></div>
 </div>
-
 
 <div class="divider"></div><br>
 <div class="divider"></div><br>

@@ -1,8 +1,9 @@
 'use strict';
 
 app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
- var items = {};
- var carId = [];
+   var items = {};
+   var pics = {};
+   var carId = [];
 
   let getSearchResult = (data) => {
 // newSearch.style = "";
@@ -12,7 +13,7 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
       // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/honda/accord/2013?submodel=sedan&fmt=json&api_key=uz4dyu9c64rjgfjrbq47kbff`)
       .success((itemObject)=>{
         resolve(itemObject);
-        // console.log("itemObject", itemObject);
+        console.log("itemObject", itemObject);
       })
       .error((error)=>{
         reject(error);
@@ -20,6 +21,29 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
     });
   };
 
+  let getPicture = (data1) => {
+    return $q((resolve, reject)=>{
+      // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
+      // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
+      $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=n7u7q8yqj78kyk4qy66zb3nj`)
+      .success((imageObject)=>{
+        resolve(imageObject);
+        console.log("imageObject", imageObject);
+      })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
+
+  let addPics = function(photoObj) {
+    pics = photoObj;
+    console.log("PICS", pics);
+  };
+
+  let getPics = function() {
+    return pics;
+  };
 
 
   let postSearchToFb = (newItem) => {
@@ -106,14 +130,14 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
     return carId;
   };
 
+
   let addItems = function(carObj) {
     items = carObj;
   };
 
   let getItems = function() {
-      console.log("ITEM FACTORY", items);
+    // console.log("ITEM", items);
     return items;
-
   };
 
 
@@ -121,6 +145,7 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
 
 
-return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb};
+
+  return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb, getPicture, addPics, getPics};
 });
 

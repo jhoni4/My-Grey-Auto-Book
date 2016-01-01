@@ -14,7 +14,7 @@ app.controller("FavoriteCtrl", function($scope, SearchFactory)  {
       $scope.favoriteSource.data.push({label: "", value: ""});
       $scope.favoriteSource.data[i].label = favObj[i].year + favObj[i].make + favObj[i].model;
       $scope.favoriteSource.data[i].value = $scope.calculateAverage(favObj[i].ratings);
-    };
+    }
   });
 
 
@@ -85,7 +85,6 @@ $scope.favoriteSource = {
         },
         data:[]
       };
-
 
 
 

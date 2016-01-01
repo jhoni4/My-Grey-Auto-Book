@@ -1,32 +1,64 @@
 'use strict';
 
-app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast needed
-
-  $scope.item = SearchFactory.getItems();
-  //now we have  $scope.item
+app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeout) {
 
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
+  $scope.zz = {};
 
-
-  //toast ////////
-  //toast ////////
-
-    // console.log("ITEM", $scope.item.make.name);
-  // });
- // let makeToast = function() {
- //  $mdToast.show(
- //    $mdToast.simple()
- //      .hideDelay(4000)
- //      .textContent("favorite saved!")
- //      .theme("success-toast")
- //    );
- //  };
+  $scope.item = SearchFactory.getItems();
+  console.log("$scope.item", $scope.item);
+  // console.log("$scope.pics", $scope.pics);
+  //now we have  $scope.item
+  //now we have  $scope.pics
+  // $scope.pic = SearchFactory.getPics();
+  // console.log("$scope.pic", $scope.pic);
+  $scope.zz.make = $scope.item.make.name;
+  $scope.zz.model = $scope.item.model.name;
+  $scope.zz.year = $scope.item.year.year;
+  $scope.zz.style = $scope.item.style.submodel.body;
 
 
 
-/////// //ADD TO FB  AND EDIT //////////////////////////////////
-/////// //ADD TO FB  AND EDIT //////////////////////////////////
+  $scope.getPhoto = () => {
+    // console.log("$scope.ZZZZ", $scope.zz);
+    SearchFactory.getPicture($scope.zz)
+    .then( (imgSearch) => {
+      console.log("imgSearch", imgSearch);
+      $scope.photo1.cool1 = "http://media.ed.edmunds-media.com" + imgSearch.photos[0].sources[0].link.href;
+      $scope.photo1.cool2 = "http://media.ed.edmunds-media.com" + imgSearch.photos[1].sources[0].link.href;
+      // console.log("TEST FOR photo1", $scope.photo1);
+      // console.log("COOL1", imgSearch.photos[0].sources[0].link.href);
+
+    });
+  };
+
+  $scope.photo1 = {
+    cool1: "",
+    cool2: ""
+  };
+
+  $scope.getPhoto();
+
+  // console.log("$scope.photo1", $scope.photo1);
+  // console.log("$scope.photo1.cool1", $scope.photo1.cool1);
+
+  //////FLASH////////////
+  //////FLASH////////////
+  //////FLASH////////////
+
+  $scope.success = function() {
+    var message = '<strong>Well done!</strong> You successfully saved it to favorites.';
+    Flash.create('success', message, 2000);
+  };
+
+
+
+
+
+  /////// //ADD TO FB //////////////////////////////////
+  /////// //ADD TO FB //////////////////////////////////
+  /////// //ADD TO FB //////////////////////////////////
 
 
   $scope.newSearch = {
@@ -53,6 +85,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
   };
 
   $scope.addToFb = (searchObj) => {
+    $scope.success();
     // console.log("searchObj", searchObj);
     $scope.newSearch.make = searchObj.make.name;
     $scope.newSearch.model = searchObj.model.name;
@@ -78,15 +111,29 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
   };
 
 
-////////////CHART//////////////////
-////////////CHART//////////////////
+  ////////////CHART//////////////////
+  ////////////CHART//////////////////
+  ////////////CHART//////////////////
 
-    $scope.myDataSource = {
-        chart: {
-            caption: "",
-            subCaption: "",
-        },
-        data:[{
+  $scope.myDataSource = {
+    chart: {
+        caption: "",
+        subcaption: "",
+        startingangle: "120",
+        showlabels: "0",
+        showlegend: "1",
+        enablemultislicing: "0",
+        slicingdistance: "15",
+        showpercentvalues: "1",
+        showpercentintooltip: "0",
+        plottooltext: "$label Rating : $datavalue",
+        theme: "fint",
+        captionfontsize: "18",
+        plottooltextfontsize: "18",
+        valuefontsize: "16"
+    },
+    data: [
+        {
             label: "Performance",
             value: ""
         },
@@ -105,8 +152,10 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
         {
             label: "FunToDrive",
             value: ""
-        }]
-      };
+        }
+    ]
+  };
+
 
 
   $scope.createChart = (searchObj) => {
@@ -121,11 +170,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
     // console.log("CHART ITEM", $scope.myDataSource.chart.caption);
   };
 
-$scope.createChart($scope.item);
-
-
-
-
+   $scope.createChart($scope.item);
 
 
 });

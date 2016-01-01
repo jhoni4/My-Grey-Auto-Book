@@ -3,8 +3,14 @@
 app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location) {
 
   $scope.xx = [];
+  // $scope.pp = [];
 
-//API DATA GETTER CONTROLLERS
+
+
+//API DATA GETTER CONTROLLERS///////////
+//API DATA GETTER CONTROLLERS///////////
+//API DATA GETTER CONTROLLERS///////////
+
   $scope.runSearchResult = () => {
     $scope.xx.make = $scope.cars.makes[$scope.selectedCarMake].name;
     $scope.xx.model = $scope.cars.makes[$scope.selectedCarMake].models[$scope.selectedCarModel].name;
@@ -14,16 +20,22 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
     SearchFactory.getSearchResult($scope.xx)
     .then( (searchObj) => {
       $scope.item = searchObj;
-      // console.log("searchObj", searchObj);
       SearchFactory.addItems(searchObj);
-      // console.log("TEST FOR SEARCHOBJ", $scope.item);
-      // console.log("TEST FOR SEARCHOBJyear", $scope.item.year.year);
+      // $scope.getPhoto($scope.xx);
       $location.url("/result");
     });
 
   };
-
-
+  // $scope.getPhoto = () => {
+  //   console.log("$scope.XXXX", $scope.xx);
+  //   SearchFactory.getPicture($scope.xx)
+  //   .then( (imgSearch) => {
+  //     console.log("imgSearch", imgSearch);
+  //     $scope.pic = imgSearch;
+  //     SearchFactory.addPics(imgSearch);
+  //     console.log("TEST FOR PIC", $scope.pic);
+  //   });
+  // };
 
 
 // DROP DROWN CONTROLLERS////////////////////////////////////////////
@@ -51,6 +63,11 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
   });
 
 
+
+
+
+
+// ON CHANGE drop down  EVENT LISTENER/////////
 // ON CHANGE drop down  EVENT LISTENER/////////
 
   $scope.update = function() {
@@ -77,7 +94,7 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
   $scope.addSlide = function() {
     slides.push({
       text: ['Best Safety Rated Truck of 2016','Top Consumer Rated Crossover of 2016','Top Consumer Rated Luxury Vehicle of 2017','Top Consumer Rated Sedan of 2017','Best Expert Chosen Sedan Of 2017', 'Top Consumer Rated Electric Car of 2017', 'Most Fuel Efficient Coupe of 2017', 'Best Luxury Car Under $35,000'][slides.length % 8],
-      image: ['/images/slides/fordRaptor.png','/images/slides/bmwx4.png','/images/slides/porche911.png','/images/slides/acura.jpg', '/images/slides/honda.jpg', '/images/slides/ford.png', '/images/slides/fiat.png', '/images/slides/lexus.png'][slides.length % 8],
+      image: ['/images/slides/fordRaptor.png','/images/slides/bmwx4.png','/images/slides/porche911.png','/images/slides/acura.png', '/images/slides/honda.jpg', '/images/slides/ford.png', '/images/slides/fiat.png', '/images/slides/lexus.png'][slides.length % 8],
       id: currIndex++
     });
   }
@@ -86,15 +103,6 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
   }
 
 /////////////
-
-  // Randomize logic below
-
-  // function assignNewIndexesToSlides(indexes) {
-  //   for (var i = 0, l = slides.length; i < l; i++) {
-  //     slides[i].id = indexes.pop();
-  //   }
-  // }
-
 
 
 
