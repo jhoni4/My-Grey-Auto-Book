@@ -1,4 +1,3 @@
-  <!-- <h1>{{item.year.year}} {{item.make.name}} {{item.model.name}}</h1> -->
 <!--  -->
 </div>
 <div class="divider"></div>
@@ -14,7 +13,7 @@
         <span> <h1>{{item.year.year}} {{item.make.name}} {{item.model.name}}</h1></span>
         <h2>{{item.style.name}}</h2>
         <a href='https://www.google.com/search?q={{item.year.year}}{{item.make.name}}{{item.model.name}}&tbm=isch'>photos</a>
-        <button  ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="saveToFb()">Save</button>
+        <button  ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="addToFb(item)">Save</button>
       </div>
     </div>
     </div>

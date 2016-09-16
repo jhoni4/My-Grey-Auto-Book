@@ -26,7 +26,7 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
   let postSearchToFb = (newItem) => {
       return $q( (resolve, reject) => {
-        $http.post(`${FirebaseURL}/search.json`, JSON.stringify(newItem))
+        $http.post(`${FirebaseURL}/Favorite.json`, JSON.stringify(newItem))
           .success( (ObjFromFirebase) => {
             resolve(ObjFromFirebase);
           })
@@ -35,6 +35,22 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
           });
       });
     };
+
+  let getFavoriteFromFb = () => {
+    let fav = []
+    return $q((resolve, reject) => {
+      $http.get(`${FirebaseURL}Favorite.json`)
+      .success((data) => {
+        fav.push(data);
+        console.log( "DATAFBFBFB", data);
+        console.log( "FAVVVVVVVV", fav);
+        resolve(data)
+      })
+      .error((error) => {
+        reject(error);
+      });
+    });
+  };
 
   let addItems = function(carObj) {
     items = carObj;
@@ -51,6 +67,6 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
 
 
-return {getSearchResult, postSearchToFb, addItems, getItems};
+return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb};
 });
 
