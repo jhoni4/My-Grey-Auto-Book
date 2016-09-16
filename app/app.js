@@ -10,10 +10,6 @@ app.config(function($routeProvider) {
             controller: "LoginCtrl"
         }).
         when('/home', {
-            templateUrl: "partials/home.html",
-            controller: "HomeCtrl"
-        }).
-        when('/search', {
             templateUrl: "partials/searchBar.html",
             controller: "SearchBarCtrl"
         }).
@@ -26,7 +22,6 @@ app.config(function($routeProvider) {
             controller: "FavoriteCtrl"
         }).
          otherwise("/home");
-
 
 
 });

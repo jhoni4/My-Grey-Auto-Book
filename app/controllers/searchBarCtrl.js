@@ -1,57 +1,45 @@
 'use strict';
 
-app.controller("SearchBarCtrl", function($scope, $http, SearchFactory) {
+app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location) {
 
 //API DATA GETTER CONTROLLERS
-  $scope.item = [];
+  // $scope.item;
   $scope.xx = [];
 
   $scope.runSearchResult = () => {
-    console.log("TEST FOR MAKE", $scope.cars.makes[$scope.selectedCarMake].name);
     $scope.xx.make = $scope.cars.makes[$scope.selectedCarMake].name;
-
-    console.log("TEST FOR MODEL", $scope.cars.makes[$scope.selectedCarMake].models[$scope.selectedCarModel].name);
     $scope.xx.model = $scope.cars.makes[$scope.selectedCarMake].models[$scope.selectedCarModel].name;
-
-    // console.log("TEST FOR YEAR", $scope.cars.makes[$scope.selectedCarMake].models[$scope.selectedCarModel].years[$scope.selectedCarYear]);
-    // console.log("YEARRRR", $scope.cars.makes[$scope.cars.makes]);
-
-    console.log("TEST FOR #YEAR", $scope.selectedCarYear);
     $scope.xx.year = $scope.carYears[$scope.selectedCarYear].year;
-
-    // console.log("TEST FOR #STYLE", $scope.selectedCarStyle);
-    // console.log("TEST FOR #STYLE", selectedCarStyle);
     $scope.xx.style = $scope.selectedCarStyle;
-
     console.log("TEST FOR XX", $scope.xx);
     SearchFactory.getSearchResult($scope.xx)
     .then( (searchObj) => {
       $scope.item = searchObj;
-      console.log("TEST FOR SEARCHOBJ", searchObj);
-    })
-    .then((data) => {
-      console.log("so far so good");
-      // $location.url("/result");
+      console.log("searchObj", searchObj);
+      SearchFactory.addItems(searchObj);
+      // console.log("TEST FOR SEARCHOBJ", $scope.item);
+      // console.log("TEST FOR SEARCHOBJyear", $scope.item.year.year);
+      $location.url("/result");
     });
-  // return data;
+
   };
 
 
 
 
-// DROP DROWN CONTROLLERS/////////////////////////////////
-
-
+// DROP DROWN CONTROLLERS////////////////////////////////////////////
 
   $scope.selectedCarMake = "";
   $scope.selectedCarModel = "";
   $scope.selectedCarYear = "";
   $scope.selectedCarStyle = "";
 
+//list of drop downs////
+
   $scope.cars = [];
   $scope.carModels = [];
   $scope.carYears = [];
-  $scope.carstyles = ["Sedan", "Suv", "Truck"];
+  $scope.carstyles = ["Sedan", "Coupe", "Suv", "Truck"];
 
   $http({
     method: 'GET',
@@ -63,12 +51,73 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory) {
 
 
 // ON CHANGE drop down  EVENT LISTENER
+
   $scope.update = function() {
     $scope.carModels = $scope.cars.makes[$scope.selectedCarMake].models;
   };
   $scope.update2 = function() {
     $scope.carYears = $scope.carModels[$scope.selectedCarModel].years;
   };
+
+
+
+//////////////////////////////////////////////////////////////////////////
+//SLIDE PICTURES
+//////////////////////////////////////////////////////////////////////////
+
+
+ $scope.myInterval = 5000;
+  $scope.noWrapSlides = false;
+  $scope.active = 0;
+  var slides = $scope.slides = [];
+  var currIndex = 0;
+
+  $scope.addSlide = function() {
+    // var newWidth = 600 + slides.length + 1;
+    slides.push({
+      image: '/images/slides/fordRaptor.jpg',
+      text: ['Most Fuel Efficient Cars','Top Consumer Rated Sedans of 2017','Top Consumer Rated Luxury Vehicles of 2017','Best Safety Rated Cars'][slides.length % 6],
+      id: currIndex++
+    });
+  };
+
+  for (var i = 0; i < 6; i++) {
+    $scope.addSlide();
+  }
+
+  function assignNewIndexesToSlides(indexes) {
+    for (var i = 0, l = slides.length; i < l; i++) {
+      slides[i].id = indexes.pop();
+    }
+  }
+
+  function generateIndexesArray() {
+    var indexes = [];
+    for (var i = 0; i < currIndex; ++i) {
+      indexes[i] = i;
+    }
+    return shuffle(indexes);
+  }
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -91,4 +140,3 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory) {
 
 
 
-});

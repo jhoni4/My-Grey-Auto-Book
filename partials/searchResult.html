@@ -1,74 +1,56 @@
-<div ng-include="'partials/navbar.html'"></div>
-  <div class="container">
-    <div class="row">
-      <div class="card col-md-4">
-        <!-- <div class="panel panel-default"> -->
-          <div class="panel-body bg-warning">
-           <span> <h1>{{item.year.year}} {{item.make.name}} {{item.model.name}}</h1></span>
-            <h2>{{item.style.name}}</h2>
-            <a href='https://www.google.com/search?q={{item.year.year}}{{item.make.name}}{{item.model.name}}&tbm=isch'>photos</a>
-            <button  ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="saveToFb()">Save</button>
-          <!-- </div> -->
-        </div>
+  <!-- <h1>{{item.year.year}} {{item.make.name}} {{item.model.name}}</h1> -->
+<!--  -->
+</div>
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div><br>
+<div class="divider"></div><br>
+<div class="divider"></div><br>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="card s2 z-depth-4">
+      <div class="panel-body bg-warning">
+        <span> <h1>{{item.year.year}} {{item.make.name}} {{item.model.name}}</h1></span>
+        <h2>{{item.style.name}}</h2>
+        <a href='https://www.google.com/search?q={{item.year.year}}{{item.make.name}}{{item.model.name}}&tbm=isch'>photos</a>
+        <button  ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="saveToFb()">Save</button>
       </div>
-      <div class="card col-md-6">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="info">Rating Parameter</th>
-              <th class="info">Ratings</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th class="warning">{{item.ratings[0].title}}</th></tr>
-            <tr>
-              <td> {{item.ratings[0].title}} score :</td>
-              <td>{{item.ratings[0].score}}</td>
-            </tr>
-            <tr>
-              <td> {{item.ratings[0].title}} grade :</td>
-              <td>{{item.ratings[0].grade}}</td>
-            </tr>
-            <tr>
-              <td> {{item.ratings[0].title}} summary :</td>
-              <td>{{item.ratings[0].summary}}</td>
-            </tr>
-            <tr>
-              <td>
-                <a class="btn btn-active" role="button" data-toggle="collapse" href="#{{item.ratings[0].title}}"      aria-expanded="false" aria-controls="collapseExample">More {{item.ratings[0].title}} Detail</a>
-                <div class="collapse" id="{{item.ratings[0].title}}">
-                  <div class="well">
-                    {{item.ratings[0].summary}}
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <th class="warning">{{item.ratings[1].title}}</th>
-            <tr><td> {{item.ratings[1].title}} score : {{item.ratings[1].score}}</td></tr>
-            <tr><td> {{item.ratings[1].title}} grade : {{item.ratings[1].grade}}</td></tr>
-            <tr><td><a class="btn btn-active" role="button" data-toggle="collapse" href="#{{item.ratings[0].title}}" aria-expanded="false" aria-controls="collapseExample">Overall Summary</a></td></tr>
-            <th class="warning">{{item.ratings[2].title}}</th>
-            <tr><td> {{item.ratings[2].title}} score : {{item.ratings[2].score}}</td></tr>
-            <tr><td> {{item.ratings[2].title}} grade : {{item.ratings[2].grade}}</td></tr>
-            <tr><td><a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{item.ratings[2].title}}">More {{item.ratings[1].title}} Detail</a></td></tr>
-            <th class="warning">{{item.ratings[3].title}}</th>
-            <tr><td> {{item.ratings[3].title}} score : {{item.ratings[3].score}}</td></tr>
-            <tr><td> {{item.ratings[3].title}} grade : {{item.ratings[3].grade}}</td></tr>
-            <tr><td><a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{item.ratings[3].title}}">More {{item.ratings[1].title}} Detail</a></td></tr>
-            <th class="warning">{{item.ratings[4].title}}</th>
-            <tr><td> {{item.ratings[4].title}} score : {{item.ratings[4].score}}</td></tr>
-            <tr><td> {{item.ratings[4].title}} grade : {{item.ratings[4].grade}}</td></tr>
-            <tr><td><a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{item.ratings[4].title}}">More {{item.ratings[1].title}} Detail</a></td></tr>
-            <tr><td> </td></tr>
-          </tbody>
-        </table>
-       </div>
-        <a class="btn btn-active" role="button" data-toggle="collapse" href="#collapseExample"      aria-expanded="false" aria-controls="collapseExample">Overall Summary</a>
-        <div class="collapse" id="{{item.ratings[0].title}}">
-          <div class="well">{{item.summary}}</div>
-        </div>
+    </div>
+    </div>
+    <div class="card s4 z-depth-4">
+      <table class="table striped">
+        <thead>
+          <tr>
+            <th class="info">Rating Parameter</th>
+            <th class="info">Ratings</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat ="z in item.ratings">
+          <tr>
+            <th class="warning">{{z.title}}</th>
+          </tr>
+          <tr>
+            <td> {{z.title}} score :</td>
+            <td>{{z.score}}</td>
+          </tr>
+          <tr>
+            <td> {{z.title}} grade :</td>
+            <td>{{z.grade}}</td>
+          </tr>
+          <tr>
+            <td>
+              <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{z.title}} Summary </button>
+            </td>
+            <td>
+              <div uib-collapse="isCollapsed">
+                <div class="well well-lg">{{z.summary}}</div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
     </div>
   </div>
-  <div ng-include="'partials/footer.html'"></div>
-
+</div>
