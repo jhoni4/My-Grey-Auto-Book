@@ -2,6 +2,7 @@
 
 app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
  var items = {};
+ var carId = [];
 
   let getSearchResult = (data) => {
 // newSearch.style = "";
@@ -37,19 +38,46 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
     };
 
   let getFavoriteFromFb = () => {
-    let fav = []
+    let fav = [];
     return $q((resolve, reject) => {
       $http.get(`${FirebaseURL}Favorite.json`)
-      .success((data) => {
-        fav.push(data);
-        console.log( "DATAFBFBFB", data);
-        console.log( "FAVVVVVVVV", fav);
-        resolve(data)
+        .success((data)=>{
+        Object.keys(data).forEach((key) => {
+        data[key].carId = key;
+        fav.push(data[key]);
+        carId = data[key].carId;
+        // console.log(carId, "carId");
+      });
+        resolve(fav);
+        console.log(fav, "fav");
       })
       .error((error) => {
         reject(error);
       });
     });
+  };
+
+  let deleteFavFromFirebase = (carId) => {
+    console.log("carId", carId);
+    return $q((resolve, reject) => {
+      $http.delete(`${FirebaseURL}Favorite/${carId}.json`)
+      .success((objFromFirebase) => {
+        console.log("DELETED");
+        resolve(objFromFirebase);
+      })
+        .error((error) => {
+          reject(error);
+        });
+    });
+  };
+
+  let setCarId = (id) => {
+    carId = id;
+    console.log(carId);
+  };
+
+  let getCarId = () => {
+    return carId;
   };
 
   let addItems = function(carObj) {
@@ -67,6 +95,6 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
 
 
-return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb};
+return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId};
 });
 

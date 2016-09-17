@@ -3,21 +3,28 @@
 <hr>
 <div class="container">
   <div class="row">
-    <div class="card col s4 blue-grey cardFav" ng-repeat="j in favorites">
-      <div>
+    <div class="card col s4 #546e7a blue-grey darken-1" ng-repeat="j in favorites" style="margin: 3px;">
+      <div class="col-content">
         <div class="card-content white-text">
-          <span class="card-title">{{j.year}}{{j.make}}{{j.model}}</span>
+          <span class="card-title">{{j.year}}&nbsp;{{j.make}}&nbsp;{{j.model}}</span>
           <p>{{j.style}}</p>
-          <p>{{j.ratings.performanceSummary}}</p>
           <hr>
-          <ul ng-repeat="k in favorites.ratings">
-            <li>{{k.performanceScore}}</li>
+          <ul>
+            <li>Performance Score:&nbsp;{{j.ratings.performanceScore}}</li>
+            <li>
+              <a href="" ng-click="isCollapsed = !isCollapsed " style="color:yellow;">Performance Summary</a>
+            </li>
+            <li>
+              <div uib-collapse="isCollapsed">
+                <div class="well well-lg" style="color:brown;">{{j.ratings.performanceSummary}}</div>
+              </div>
+            </li>
           </ul>
-          <!-- <p>{{j.summary}}</p> -->
+          <p>{{j.summary}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Delete</a>
-          <a href="#">Add comment</a>
+          <a href="" ng-click="deleteCar(j.carId)">Delete</a>
+          <a href="">Add comment</a>
         </div>
       </div>
     </div>

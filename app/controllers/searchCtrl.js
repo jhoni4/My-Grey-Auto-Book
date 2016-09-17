@@ -20,8 +20,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
     model: "",
     style: "",
     year: "",
-    ratings: [
-      {
+    ratings: {
         performanceScore: "",
         performanceSummary: "",
         comfortScore: "",
@@ -32,9 +31,10 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
         valueSummary: "",
         funToDriveScore: "",
         funToDriveSummary: ""
-      }
-    ],
-    summary: ""
+      },
+    summary: "",
+    cardId: SearchFactory.getCarId()
+
   };
 
   $scope.addToFb = (searchObj) => {
@@ -57,7 +57,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
     console.log("newSearch", $scope.newSearch);
     SearchFactory.postSearchToFb($scope.newSearch)
     .then(
-      (data) => console.log('search saved!'),
+      (data) => console.log('search saved!', $scope.newSearch),
       (error) => console.log(error)
     );
   };

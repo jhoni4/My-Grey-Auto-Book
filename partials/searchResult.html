@@ -1,55 +1,53 @@
 <!--  -->
-</div>
-<div class="divider"></div>
-<div class="divider"></div>
-<div class="divider"></div><br>
-<div class="divider"></div><br>
-<div class="divider"></div><br>
-<hr>
+  <div class="divider"></div>
+  <div class="divider"></div>
+  <div class="divider"></div><br>
+  <div class="divider"></div><br>
+  <div class="divider"></div><br>
+  <hr>
 <div class="container">
   <div class="row">
-    <div class="card s2 z-depth-4">
+    <div class="card col s4">
       <div class="panel-body bg-warning">
-        <span> <h1>{{item.year.year}} {{item.make.name}} {{item.model.name}}</h1></span>
+        <span> <h1>{{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}</h1></span>
         <h2>{{item.style.name}}</h2>
-        <a href='https://www.google.com/search?q={{item.year.year}}{{item.make.name}}{{item.model.name}}&tbm=isch'>photos</a>
+        <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'>photos</a>
         <button  ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="addToFb(item)">Save</button>
       </div>
     </div>
-    </div>
-    <div class="card s4 z-depth-4">
+    <div class="col"></div>
+    <div class="col s7 z-depth-4">
       <table class="table striped">
         <thead>
           <tr>
-            <th class="info">Rating Parameter</th>
-            <th class="info">Ratings</th>
+            <th class="info"><h2>Rating Parameter</h2></th>
+            <th class="info"><h2>Ratings</h2></th>
           </tr>
         </thead>
         <tbody ng-repeat ="z in item.ratings">
           <tr>
-            <th class="warning">{{z.title}}</th>
+            <th class="warning"><h2>{{z.title}}</h2></th>
           </tr>
           <tr>
-            <td> {{z.title}} score :</td>
-            <td>{{z.score}}</td>
+            <td><h3>{{z.title}} score :</h3></td>
+            <td><h3>{{z.score}}</h3></td>
           </tr>
           <tr>
-            <td> {{z.title}} grade :</td>
-            <td>{{z.grade}}</td>
+            <td><h3>{{z.title}} grade :</h3></td>
+            <td><h3>{{z.grade}}</h3></td>
           </tr>
           <tr>
             <td>
-              <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">{{z.title}} Summary </button>
+              <a href="" ng-click="isCollapsed = !isCollapsed"><h3>{{z.title}} Summary</h3></a>
             </td>
             <td>
               <div uib-collapse="isCollapsed">
-                <div class="well well-lg">{{z.summary}}</div>
+                <div class="well well-lg"><h3>{{z.summary}}</h3></div>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
-      </div>
     </div>
   </div>
 </div>

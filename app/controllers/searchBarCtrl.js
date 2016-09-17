@@ -112,16 +112,7 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 
 /// I LOVE CONSOLE LOGS!!!!!   //////
 
-    // console.log("TTTTTTZZZZZZ", $scope.selectedCarModel);
-    // console.log("$scope.carModels[$scope.selectedCarModel].years", $scope.carModels[$scope.selectedCarModel].years);
-    // console.log("Test running", $scope.carModels);
-    // console.log("Test running", $scope.cars.makes[$scope.selectedCarMake].name);
-    // console.log("TESTTT", $scope.carModels[$scope.selectedCarMake]);
-    // $scope.carYears = $scope.carModels[$scope.selectedCarMake].models[$scope.selectedCarModel].years;
-    // console.log("SELECTED MAKE", $scope.selectedCarMake);
-    // console.log("SELECTED MODEL", $scope.selectedCarModel);
-    // console.log("YEARS", $scope.carYears.years);
-    // console.log("YEARS ", $scope.selectedCarYear);
+
 
 
 
