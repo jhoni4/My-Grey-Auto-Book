@@ -3,8 +3,24 @@ var app = angular.module("RatingApp", ["ngRoute", 'ngAnimate', 'ngSanitize', 'ui
 .constant("FirebaseURL", "https://safety1-b7b77.firebaseio.com/");
 
 
+
+let isAuth = (AuthFactory) => new Promise( (resolve, reject) => {
+    if(AuthFactory.isAuthenticated()) {
+        console.log("Authenticated user , Go a head");
+        resolve();
+    }else {
+        console.log("Not Authenticated user , Go a away");
+        reject ();
+    }
+});
+
+
 app.config(function($routeProvider) {
     $routeProvider.
+        when('/', {
+            templateUrl: "partials/login.html",
+            controller: "LoginCtrl"
+        }).
         when('/login', {
             templateUrl: "partials/login.html",
             controller: "LoginCtrl"
@@ -21,7 +37,17 @@ app.config(function($routeProvider) {
             templateUrl: "partials/favorite.html",
             controller: "FavoriteCtrl"
         }).
-         otherwise("/home");
-
+         otherwise("/");
 
 });
+
+  app.run( ($location, FBCreds) => {
+    let creds = FBCreds;
+    let authConfig = {
+      apiKey: creds.key,
+      authDomain: creds.authDomain
+    };
+    firebase.initializeApp(authConfig);
+  });
+
+

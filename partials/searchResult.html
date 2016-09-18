@@ -1,18 +1,25 @@
-<!--  -->
+<div>
   <div class="divider"></div>
   <div class="divider"></div>
   <div class="divider"></div><br>
   <div class="divider"></div><br>
   <div class="divider"></div><br>
   <hr>
-<div class="container">
   <div class="row">
     <div class="card col s4">
       <div class="panel-body bg-warning">
-        <span> <h1>{{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}</h1></span>
-        <h2>{{item.style.name}}</h2>
+        <a href="" ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Save</a>
+        <span> <h1>{{item.year.year}}&nbsp;<br>{{item.make.name}}&nbsp;{{item.model.name}}</h1></span>
+        <h3>{{item.style.name}}</h3>
         <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'>photos</a>
-        <button  ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="addToFb(item)">Save</button>
+      </div>
+      <div>
+        <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'>
+          <h3>Overall Summary</h3>
+        </a>
+        <div uib-collapse="isCollapsed">
+          <div class="well well-lg"><h3>{{item.summary}}</h3></div>
+        </div>
       </div>
     </div>
     <div class="col"></div>
@@ -38,7 +45,9 @@
           </tr>
           <tr>
             <td>
-              <a href="" ng-click="isCollapsed = !isCollapsed"><h3>{{z.title}} Summary</h3></a>
+              <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'>
+                <h3>{{z.title}} Summary</h3>
+              </a>
             </td>
             <td>
               <div uib-collapse="isCollapsed">

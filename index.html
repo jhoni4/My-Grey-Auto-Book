@@ -15,14 +15,11 @@
 </head>
 <body ng-app="RatingApp">
 
-
-
-<div ng-include="'partials/navbar.html'"></div>
-<div class="container">
-  <div ng-view></div>
-</div>
-<div class="page-footer" ng-include="'partials/footer.html'"></div>
-
+  <div class="container main" ng-controller="TopCtrl" >
+    <div ng-include="'partials/navbar.html'"></div>
+      <div ng-view></div>
+  </div>
+  <div class="page-footer" ng-include="'partials/footer.html'"></div>
 
 
 
@@ -41,18 +38,24 @@
   <script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script> -->
   <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
-  <script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/3.0.0/firebase.js"></script>
+
+  <!-- <script type="text/javascript" src="lib/bower_components/firebase/firebase.js"></script> -->
 
 <!-- app related scripts -->
   <script type="text/javascript" src="app/app.js"></script>
 <!-- providers files  -->
+  <script type="text/javascript" src="app/values/fb-cred.js"></script>
   <script type="text/javascript" src="app/factories/searchFactory.js"></script>
+  <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
+
 <!-- Controllers -->
   <script type="text/javascript" src="app/controllers/navCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/loginCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/searchBarCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/searchCtrl.js"></script>
   <script type="text/javascript" src="app/controllers/favoriteCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/TopCtrl.js"></script>
   <!-- <script type="text/javascript" src="app/controllers/HomeCtrl.js"></script> -->
 </body>
 </html>

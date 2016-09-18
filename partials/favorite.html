@@ -11,6 +11,8 @@
           <hr>
           <ul>
             <li>Performance Score:&nbsp;{{j.ratings.performanceScore}}</li>
+            <li>Comfort Score:&nbsp;{{j.ratings.comfortScore}}</li>
+            <li>Fun To DriveScore Score:&nbsp;{{j.ratings.funToDriveScore}}</li>
             <li>
               <a href="" ng-click="isCollapsed = !isCollapsed " style="color:yellow;">Performance Summary</a>
             </li>
@@ -24,7 +26,7 @@
         </div>
         <div class="card-action">
           <a href="" ng-click="deleteCar(j.carId)">Delete</a>
-          <a href="">Add comment</a>
+          <a href="" ng-click="addComment(j.carId)">Add comment</a>
         </div>
       </div>
     </div>
