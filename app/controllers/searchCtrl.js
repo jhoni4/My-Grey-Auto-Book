@@ -8,7 +8,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
 
-
+// Materialize.toast('I am a toast!', 4000);
 /////// //ADD TO FB  AND EDIT //////////////////////////////////
 /////// //ADD TO FB  AND EDIT //////////////////////////////////
 
@@ -33,6 +33,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
         funToDriveSummary: ""
       },
     summary: "",
+    comment: "",
     cardId: SearchFactory.getCarId()
 
   };

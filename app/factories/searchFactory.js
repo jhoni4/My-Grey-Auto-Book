@@ -54,6 +54,21 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
     });
   };
 
+
+
+  let getSingleCarFromFb = (carId) => {
+    console.log("carId", carId);
+    return $q((resolve, reject) => {
+      $http.get(`${FirebaseURL}Favorite/${carId}.json`)
+      .success((objFromFirebase) => {
+        resolve(objFromFirebase);
+      })
+        .error((error) => {
+          reject(error);
+        });
+    });
+  };
+
   let deleteFavFromFirebase = (carId) => {
     console.log("carId", carId);
     return $q((resolve, reject) => {
@@ -63,6 +78,20 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
         resolve(objFromFirebase);
       })
         .error((error) => {
+          reject(error);
+        });
+    });
+  };
+
+  let updateCar = (carId, editedCar) => {
+    console.log("carId", carId);
+    console.log("editedCar", editedCar);
+    return $q( (resolve, reject) => {
+      $http.patch(`${FirebaseURL}Favorite/${carId}.json`, JSON.stringify(editedCar))
+        .success( (objFromFirebase) => {
+          resolve(objFromFirebase);
+        })
+        .error( (error) => {
           reject(error);
         });
     });
@@ -92,6 +121,6 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
 
 
-return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId};
+return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb};
 });
 

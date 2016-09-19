@@ -6,11 +6,22 @@
     <div class="brand-logo center"><a class="navbar-brand heading grey-text text-lighten-4" href="#"><h3>YBB BOOK</h3></a>
     </div>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a ng-show="$parent.isLoggedIn" class="white-text right" href="#/home"><h4>Home</h4></a></li>
-      <li><a  ng-show="$parent.isLoggedIn" class="white-text right" href="#/result"><h4>Ratings</h4></a></li>
-      <li><a  ng-show="$parent.isLoggedIn" class="white-text right" href="#/favorite"><h4>Favorites</h4></a></li>
-      <li><a  ng-show="!$parent.isLoggedIn" class="white-text right" href="#/login"><h5>LogIn</h5></a></li>
-      <li><a  ng-show="$parent.isLoggedIn" class="white-text right" ng-click="logOut()"><h5>Logout</h5></a></li>
+      <li>
+        <a ng-show="$parent.isLoggedIn" class="white-text right" href="#/home"><i class="fa fa-home fa-4x" aria-hidden="false"></i>
+      </a>
+      </li>
+      <li>
+        <a  ng-show="$parent.isLoggedIn" class="white-text right" href="#/result"><h4>Ratings</h4></a>
+      </li>
+      <li>
+        <a  ng-show="$parent.isLoggedIn" class="white-text right" href="#/favorite"><h4>Favorites</h4></a>
+      </li>
+      <li>
+        <a  ng-show="!$parent.isLoggedIn" class="white-text right" href="#/login"><h5>LogIn</h5></a>
+      </li>
+      <li>
+        <a  ng-show="$parent.isLoggedIn" class="white-text right" ng-click="logOut()"><h5>Logout</h5></a>
+      </li>
     </ul>
   </nav>
   <hr>

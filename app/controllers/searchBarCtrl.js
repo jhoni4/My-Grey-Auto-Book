@@ -66,23 +66,54 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 //////////////////////////////////////////////////////////////////////////
 
 
- $scope.myInterval = 4000;
+ // $scope.myInterval = 4000;
+ //  $scope.noWrapSlides = false;
+ //  $scope.active = 0;
+ //  var slides = $scope.slides = [];
+ //  var currIndex = 0;
+
+ //  $scope.addSlide = function() {
+ //    // var newWidth = 600 + slides.length + 1;
+ //    slides.push({
+ //      image: '/images/slides/fordRaptor.jpg',
+ //      text: ['Most Fuel Efficient Cars','Top Consumer Rated Sedans of 2017','Top Consumer Rated Luxury Vehicles of 2017','Best Safety Rated Cars'][slides.length % 4],
+ //      id: currIndex++
+ //    });
+ //  };
+
+ //  for (var i = 0; i < 4; i++) {
+ //    $scope.addSlide();
+ //  }
+/////////////
+  $scope.myInterval = 5000;
   $scope.noWrapSlides = false;
   $scope.active = 0;
   var slides = $scope.slides = [];
   var currIndex = 0;
 
   $scope.addSlide = function() {
-    // var newWidth = 600 + slides.length + 1;
     slides.push({
-      image: '/images/slides/fordRaptor.jpg',
-      text: ['Most Fuel Efficient Cars','Top Consumer Rated Sedans of 2017','Top Consumer Rated Luxury Vehicles of 2017','Best Safety Rated Cars'][slides.length % 4],
+      text: ['Best Safety Rated Cars','Most Fuel Efficient Cars','Top Consumer Rated Luxury Vehicles of 2017','Top Consumer Rated Sedans of 2017','Best Expert Chosen Sedan Of 2017'][slides.length % 5],
+      image: ['/images/slides/fordRaptor.jpg','/images/slides/bmwx4.jpg','/images/slides/porche911.jpg','/images/slides/acura.jpg', '/images/slides/honda.jpg'][slides.length % 5],
       id: currIndex++
     });
   };
 
-  for (var i = 0; i < 4; i++) {
+  $scope.randomize = function() {
+    var indexes = generateIndexesArray();
+    assignNewIndexesToSlides(indexes);
+  };
+
+  for (var i = 0; i < 5; i++) {
     $scope.addSlide();
+  }
+
+  // Randomize logic below
+
+  function assignNewIndexesToSlides(indexes) {
+    for (var i = 0, l = slides.length; i < l; i++) {
+      slides[i].id = indexes.pop();
+    }
   }
 
 

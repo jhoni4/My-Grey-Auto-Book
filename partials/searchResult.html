@@ -11,7 +11,7 @@
         <a href="" ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Save</a>
         <span> <h1>{{item.year.year}}&nbsp;<br>{{item.make.name}}&nbsp;{{item.model.name}}</h1></span>
         <h3>{{item.style.name}}</h3>
-        <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'>photos</a>
+        <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-3x">photos</i></a>
       </div>
       <div>
         <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'>
@@ -34,6 +34,7 @@
         <tbody ng-repeat ="z in item.ratings">
           <tr>
             <th class="warning"><h2>{{z.title}}</h2></th>
+            <th class="warning">/th>
           </tr>
           <tr>
             <td><h3>{{z.title}} score :</h3></td>

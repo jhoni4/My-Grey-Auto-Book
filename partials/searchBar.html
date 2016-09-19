@@ -2,36 +2,35 @@
  <div class="container hoverable">
    <div class="row">
      <div class="col s2">
-       <span>Select make of a car:
-         <select id="make" class='dropdown-button btn' ng-model="selectedCarMake" ng-change="update()">
-          <option  ng-repeat="x in cars.makes" value="{{$index}}">{{x.name}}</option>
+       <span>Make of vehicle :</span>
+         <select id="make" class='dropdown-button btn #616161 grey darken-1' ng-model="selectedCarMake" ng-change="update()">
+          <option  ng-repeat="x in cars.makes" value="{{$index}}" style="color:white;">{{x.name}}</option>
          </select>
-       </span>
      </div>
     <div class="col s2">
-      <span>Select model of a car:</span>
-      <select id="model" class='dropdown-button btn' ng-model="selectedCarModel" ng-change="update2()" ng-disabled="!selectedCarMake">
-        <option ng-repeat="y in carModels" value="{{$index}}">{{y.name}}</option>
+      <span>Model of vehicle :</span>
+      <select id="model" class='dropdown-button btn #616161 grey M' ng-model="selectedCarModel" ng-change="update2()" ng-disabled="!selectedCarMake">
+      <option ng-repeat="y in carModels" value="{{$index}}">{{y.name}}</option>
       </select>
     </div>
   </div>
   <div class="divider"></div>
     <div class="row">
       <div class="col s2">
-        <span>Select Year of a car:</span>
-        <select id="year" class='dropdown-button btn' ng-model="selectedCarYear" ng-change="update()" ng-disabled="!selectedCarModel">
-          <option ng-repeat="z in carYears" value="{{$index}}">{{z.year}}</option>
+        <span>Year of vehicle :</span>
+        <select id="year" class='dropdown-button btn #616161 grey M' ng-model="selectedCarYear" ng-change="update()" ng-disabled="!selectedCarModel">
+        <option ng-repeat="z in carYears" value="{{$index}}">{{z.year}}</option>
         </select>
       </div>
       <div class="col s2">
-        <span>Select style of a car:</span>
-        <select id="style" class='dropdown-button btn' ng-model="selectedCarStyle" ng-change="update()" ng-disabled="!selectedCarYear">
+        <span>Style of vehicle :</span>
+        <select id="style" class='dropdown-button btn #616161 grey M' ng-model="selectedCarStyle" ng-change="update()" ng-disabled="!selectedCarYear">
           <option ></option>
-          <option ng-repeat="k in carstyles" value="{{k}}">{{k}}</option>
+        <option ng-repeat="k in carstyles" value="{{k}}">{{k}}</option>
         </select>
       </div>
     </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="runSearchResult()">Run
+    <button class="btn waves-effect waves-light #616161 grey M" type="submit" name="action" ng-click="runSearchResult()">Run
     <i class="material-icons right">send</i>
     </button>
   <div class="divider"></div>
@@ -58,42 +57,16 @@
       </div>
     </div>
   </div> -->
-  <div class="container">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-      </ol>
-
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="/images/slides/acura.jpg" alt="...">
-          <div class="carousel-caption">
-            <h3>Top Consumer Rated Sedans of 2017</h3>
-          </div>
-        </div>
-        <div class="item active">
-          <img src="/images/slides/fordRaptor.jpg" alt="...">
-          <div class="carousel-caption">
-            <h3>Best Safety Rated Cars</h3>
-          </div>
+  <div style="height: 405px">
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+          <p style="font-size:3em; color:lime">{{slide.text}}</p>
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
         </div>
       </div>
-
-      <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
   </div>
+</div>
 </div>
 
