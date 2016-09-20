@@ -1,11 +1,9 @@
 <hr>
-<hr>
-<hr>
 <div class="container">
-  <div class="row">
-    <div class="card col sm s4 dispCard #546e7a blue-grey darken-1" ng-repeat="j in favorites" style="margin-right: 7px; width: 30rem;">
+<div class="box">
+    <div class="card col-md-4 off-4  #e0e0e0 grey" ng-repeat="j in favorites" style="margin-right: 5px;">
       <div class="col-content">
-        <div class="card-content white-text">
+        <div class="card-content  white-text">
         <span><h3 class="card-header">{{j.year}}&nbsp;{{j.make}}&nbsp;{{j.model}}</h3></span>
           <p>{{j.style}}</p>
           <hr>
@@ -74,11 +72,10 @@
           </div>
           <p>Comments :&nbsp;{{j.comment}}</p>
         </div>
-        <div class="card-action">
+        <div class="card-action grey darken-1">
          <a ng-click="deleteCar(j.carId)" href="">
            <i class="fa fa-trash-o fa-lg"></i> Delete</a>
           <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" style="color:lime;">Add comment</a>
-          <!--  -->
             <li>
               <div uib-collapse="isCollapsedHorizontal">
                 <div class="well well-lg" style="color:brown; font-size:1em;">
@@ -90,10 +87,16 @@
                 </div>
               </div>
             </li>
-
-          <!--  -->
         </div>
       </div>
     </div>
   </div>
 </div>
+<div class="col s4 left" style="margin-left:1%;">
+    <fusioncharts
+       width="800"
+       height="600"
+       type="column3d"
+       dataSource="{{favoriteSource}}" >
+    </fusioncharts>
+  </div>

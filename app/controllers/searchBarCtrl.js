@@ -66,25 +66,6 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 //////////////////////////////////////////////////////////////////////////
 
 
- // $scope.myInterval = 4000;
- //  $scope.noWrapSlides = false;
- //  $scope.active = 0;
- //  var slides = $scope.slides = [];
- //  var currIndex = 0;
-
- //  $scope.addSlide = function() {
- //    // var newWidth = 600 + slides.length + 1;
- //    slides.push({
- //      image: '/images/slides/fordRaptor.jpg',
- //      text: ['Most Fuel Efficient Cars','Top Consumer Rated Sedans of 2017','Top Consumer Rated Luxury Vehicles of 2017','Best Safety Rated Cars'][slides.length % 4],
- //      id: currIndex++
- //    });
- //  };
-
- //  for (var i = 0; i < 4; i++) {
- //    $scope.addSlide();
- //  }
-/////////////
   $scope.myInterval = 5000;
   $scope.noWrapSlides = false;
   $scope.active = 0;
@@ -93,28 +74,25 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 
   $scope.addSlide = function() {
     slides.push({
-      text: ['Best Safety Rated Cars','Most Fuel Efficient Cars','Top Consumer Rated Luxury Vehicles of 2017','Top Consumer Rated Sedans of 2017','Best Expert Chosen Sedan Of 2017'][slides.length % 5],
-      image: ['/images/slides/fordRaptor.jpg','/images/slides/bmwx4.jpg','/images/slides/porche911.jpg','/images/slides/acura.jpg', '/images/slides/honda.jpg'][slides.length % 5],
+      text: ['Best Safety Rated Truck of 2016','Most Popular Crossover of 2016','Top Consumer Rated Luxury Vehicle of 2017','Top Consumer Rated Sedan of 2017','Best Expert Chosen Sedan Of 2017', 'Top Consumer Rated Electric Car of 2017', 'Most Fuel Efficient Coupe of 2017'][slides.length % 7],
+      image: ['/images/slides/fordRaptor.png','/images/slides/bmwx4.png','/images/slides/porche911.png','/images/slides/acura.jpg', '/images/slides/honda.jpg', '/images/slides/ford.png', '/images/slides/fiat.png'][slides.length % 7],
       id: currIndex++
     });
-  };
+  }
 
-  $scope.randomize = function() {
-    var indexes = generateIndexesArray();
-    assignNewIndexesToSlides(indexes);
-  };
-
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 7; i++) {
     $scope.addSlide();
   }
 
+/////////////
+
   // Randomize logic below
 
-  function assignNewIndexesToSlides(indexes) {
-    for (var i = 0, l = slides.length; i < l; i++) {
-      slides[i].id = indexes.pop();
-    }
-  }
+  // function assignNewIndexesToSlides(indexes) {
+  //   for (var i = 0, l = slides.length; i < l; i++) {
+  //     slides[i].id = indexes.pop();
+  //   }
+  // }
 
 
 

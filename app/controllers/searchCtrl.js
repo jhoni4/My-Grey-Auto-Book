@@ -3,7 +3,11 @@
 app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
 
   $scope.item = SearchFactory.getItems();
-  // console.log("ITEM", $scope.item);
+  // .then( (item) => {
+    // console.log("ITEM", $scope.item.make.name);
+  // });
+
+
 
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
@@ -73,13 +77,48 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
     //   return searchObj;
     // });
 
+//CHART//////////////////
+
+  $scope.creatChart = (searchObj) => {
+    console.log("am clicked", searchObj)
+    $scope.myDataSource.chart.caption = searchObj.make.name;
+    $scope.myDataSource.chart.subCaption = searchObj.model.name;
+    $scope.myDataSource.data[0].value = searchObj.ratings[0].score;
+    $scope.myDataSource.data[1].value = searchObj.ratings[1].score;
+    $scope.myDataSource.data[2].value = searchObj.ratings[2].score;
+    $scope.myDataSource.data[3].value = searchObj.ratings[3].score;
+    $scope.myDataSource.data[4].value = searchObj.ratings[4].score;
+    console.log("CHART ITEM", $scope.myDataSource.chart.caption);
+  };
 
 
 
-
-
-
-
+$scope.myDataSource = {
+        chart: {
+            caption: "",
+            subCaption: "",
+        },
+        data:[{
+            label: "Performance",
+            value: ""
+        },
+        {
+            label: "Comfort",
+            value: ""
+        },
+        {
+            label: "Interior",
+            value: ""
+        },
+        {
+            label: "Value",
+            value: ""
+        },
+        {
+            label: "FunToDrive",
+            value: ""
+        }]
+      };
 
 
 

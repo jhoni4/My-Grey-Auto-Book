@@ -1,63 +1,60 @@
-<div>
-  <div class="divider"></div>
-  <div class="divider"></div>
-  <div class="divider"></div><br>
-  <div class="divider"></div><br>
-  <div class="divider"></div><br>
-  <hr>
-  <div class="row">
-    <div class="card col s4">
-      <div class="panel-body bg-warning">
-        <a href="" ng-controller="SearchResultCtrl" class=" btn btn-info right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Save</a>
-        <span> <h1>{{item.year.year}}&nbsp;<br>{{item.make.name}}&nbsp;{{item.model.name}}</h1></span>
-        <h3>{{item.style.name}}</h3>
-        <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-3x">photos</i></a>
+
+    <div class="col s8 offset-s1" style="background: url('images/slides/pannel.jpg') no-repeat; color:lime; padding-right: 1%;"></div>
+    <!-- <div class="off-col-2" style="background: url('images/slides/pannel.jpg') no-repeat; color:lime; padding-right: 1%;"> -->
+      <div class="center">
+         <h1>{{item.year.year}}&nbsp;<br>{{item.make.name}}&nbsp;{{item.model.name}}</h1>
+        <h3 style="color:white;">{{item.style.name}}</h3>
       </div>
-      <div>
-        <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'>
-          <h3>Overall Summary</h3>
-        </a>
+      <span>
+        <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-3x">photos</i></a>
+        <a href="" ng-click="creatChart(item)"><h3>Show Score chart</h3></a>
+        <a href="" class=" btn blue right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Add To My Favorite</a>
+        <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'><h3>Overall Summary</h3></a>
+      </span>
         <div uib-collapse="isCollapsed">
           <div class="well well-lg"><h3>{{item.summary}}</h3></div>
         </div>
-      </div>
     </div>
-    <div class="col"></div>
-    <div class="col s7 z-depth-4">
+
+    <div class="col s6 offset-s6 z-depth-4 right" style="margin-right:1%;">
       <table class="table striped">
         <thead>
           <tr>
-            <th class="info"><h2>Rating Parameter</h2></th>
-            <th class="info"><h2>Ratings</h2></th>
+            <th class="info"><h3>Rating Parameter</h3></th>
+            <th class="info"><h3>Ratings</h3></th>
           </tr>
         </thead>
         <tbody ng-repeat ="z in item.ratings">
           <tr>
-            <th class="warning"><h2>{{z.title}}</h2></th>
-            <th class="warning">/th>
+            <td style="color:black;"><p>{{z.title}} score :</p></td>
+            <td style="color:black;"><p>{{z.score}}</p></td>
           </tr>
           <tr>
-            <td><h3>{{z.title}} score :</h3></td>
-            <td><h3>{{z.score}}</h3></td>
-          </tr>
-          <tr>
-            <td><h3>{{z.title}} grade :</h3></td>
-            <td><h3>{{z.grade}}</h3></td>
+            <td style="color:white;"><p>{{z.title}} grade :</p></td>
+            <td style="color:white;"><p>{{z.grade}}</p></td>
           </tr>
           <tr>
             <td>
               <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'>
-                <h3>{{z.title}} Summary</h3>
+                <p>{{z.title}} Summary</p>
               </a>
             </td>
             <td>
               <div uib-collapse="isCollapsed">
-                <div class="well well-lg"><h3>{{z.summary}}</h3></div>
+                <div class="well well-lg"><p>{{z.summary}}</p></div>
               </div>
             </td>
           </tr>
-        </tbody>
+          </tbody>
       </table>
     </div>
+  </div>
+  <div class="col s4 left" style="margin-left:1%;">
+    <fusioncharts
+       width="800"
+       height="600"
+       type="column3d"
+       dataSource="{{myDataSource}}" >
+    </fusioncharts>
   </div>
 </div>

@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module("RatingApp", ["ngRoute", 'ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+var app = angular.module("RatingApp", ["ngRoute", 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ng-fusioncharts'])
 .constant("FirebaseURL", "https://safety1-b7b77.firebaseio.com/");
 
 

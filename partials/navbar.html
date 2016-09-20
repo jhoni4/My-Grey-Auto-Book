@@ -1,10 +1,9 @@
-<div ng-controller="NavCtrl">
-  <nav class="nav-wrapper #616161 grey darken-1 col s12 z-depth-4">
-    <div class="navbar-header">
-    <a href="#" class="brand-logo"><img alt="Brand" src="http://www.bluedogusa.com/images/under_construction.png" width="100" height=100></a>
-    </div>
-    <div class="brand-logo center"><a class="navbar-brand heading grey-text text-lighten-4" href="#"><h3>YBB BOOK</h3></a>
-    </div>
+
+<div class="coolTitle" style="background:url('/images/slides/banner.png') no-repeat right;"><img src="/images/slides/GRY.png" width="300px", height="50px"><hr></div>
+  <nav ng-controller="NavCtrl" class="nav-wrapper #616161 grey darken-1 col s12 z-depth-4">
+    <!-- <div class="navbar-header">
+    <a href="#" class="brand-logo"><img alt="Brand" src="/images/slides/logo.png" width="130" height=100></a>
+    </div> -->
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li>
         <a ng-show="$parent.isLoggedIn" class="white-text right" href="#/home"><i class="fa fa-home fa-4x" aria-hidden="false"></i>
@@ -17,13 +16,12 @@
         <a  ng-show="$parent.isLoggedIn" class="white-text right" href="#/favorite"><h4>Favorites</h4></a>
       </li>
       <li>
-        <a  ng-show="!$parent.isLoggedIn" class="white-text right" href="#/login"><h5>LogIn</h5></a>
+        <a  ng-show="!$parent.isLoggedIn" class="white-text right" href="#/login"><h4>LogIn</h4></a>
       </li>
       <li>
-        <a  ng-show="$parent.isLoggedIn" class="white-text right" ng-click="logOut()"><h5>Logout</h5></a>
+        <a  ng-show="$parent.isLoggedIn" class="white-text right" ng-click="logOut()"><h4>Logout</h4></a>
       </li>
     </ul>
   </nav>
   <hr>
-</div>
 
