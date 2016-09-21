@@ -1,5 +1,22 @@
 <div class="page3" style="background-image: url('images/slides/background2.png');">
   <div class="container">
+    <div class="col s3">
+      <a href="" ng-click="isCollapsedHorizontal1 = !isCollapsedHorizontal1" tooltip-popup-close-delay='500' uib-tooltip='click to see chart'><h3><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Compare Chart Summary</h3></a>
+    </div>
+    <div class="container">
+    <div uib-collapse="isCollapsedHorizontal1">
+      <div class="well well-sm black">
+        <div class="col s4 left" style="margin-left:5%;">
+          <fusioncharts
+             width="1000"
+             height="600"
+             type="column3d"
+             dataSource="{{favoriteSource}}" >
+          </fusioncharts>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="box" style="margin-left: 10%;">
       <div class="card col-lg-5  #e0e0e0 grey" ng-repeat="j in favorites" style="margin:40px;">
         <div class="col-content">
@@ -91,13 +108,5 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="col s4 left" style="margin-left:20%;">
-    <fusioncharts
-       width="800"
-       height="600"
-       type="column3d"
-       dataSource="{{favoriteSource}}" >
-    </fusioncharts>
   </div>
 </div>

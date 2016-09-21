@@ -1,22 +1,32 @@
 'use strict';
 
-app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
+app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast needed
 
   $scope.item = SearchFactory.getItems();
-  // .then( (item) => {
-    // console.log("ITEM", $scope.item.make.name);
-  // });
-
-
+  //now we have  $scope.item
 
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
 
-// Materialize.toast('I am a toast!', 4000);
-/////// //ADD TO FB  AND EDIT //////////////////////////////////
-/////// //ADD TO FB  AND EDIT //////////////////////////////////
 
-  // we have  $scope.item;
+  //toast ////////
+  //toast ////////
+
+    // console.log("ITEM", $scope.item.make.name);
+  // });
+ // let makeToast = function() {
+ //  $mdToast.show(
+ //    $mdToast.simple()
+ //      .hideDelay(4000)
+ //      .textContent("favorite saved!")
+ //      .theme("success-toast")
+ //    );
+ //  };
+
+
+
+/////// //ADD TO FB  AND EDIT //////////////////////////////////
+/////// //ADD TO FB  AND EDIT //////////////////////////////////
 
 
   $scope.newSearch = {
@@ -68,6 +78,8 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
   };
 
 
+////////////CHART//////////////////
+////////////CHART//////////////////
 
     $scope.myDataSource = {
         chart: {
@@ -96,7 +108,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
         }]
       };
 
-//CHART//////////////////
+
   $scope.createChart = (searchObj) => {
     console.log("am clicked", searchObj);
     $scope.myDataSource.chart.caption = searchObj.make.name;

@@ -43,7 +43,7 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 
   $http({
     method: 'GET',
-    url: '/data/list.json',
+    url: '/data/list2.json',
   }).success(function (result) {
     $scope.cars = result;
       // console.log("result", result);
@@ -66,7 +66,7 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 //////////////////////////////////////////////////////////////////////////
 
 
-  $scope.myInterval = 4000;
+  $scope.myInterval = 3000;
   $scope.noWrapSlides = false;
   $scope.active = 0;
   var slides = $scope.slides = [];
@@ -74,13 +74,13 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 
   $scope.addSlide = function() {
     slides.push({
-      text: ['Best Safety Rated Truck of 2016','Most Popular Crossover of 2016','Top Consumer Rated Luxury Vehicle of 2017','Top Consumer Rated Sedan of 2017','Best Expert Chosen Sedan Of 2017', 'Top Consumer Rated Electric Car of 2017', 'Most Fuel Efficient Coupe of 2017'][slides.length % 7],
-      image: ['/images/slides/fordRaptor.png','/images/slides/bmwx4.png','/images/slides/porche911.png','/images/slides/acura.jpg', '/images/slides/honda.jpg', '/images/slides/ford.png', '/images/slides/fiat.png'][slides.length % 7],
+      text: ['Best Safety Rated Truck of 2016','Top Consumer Rated Crossover of 2016','Top Consumer Rated Luxury Vehicle of 2017','Top Consumer Rated Sedan of 2017','Best Expert Chosen Sedan Of 2017', 'Top Consumer Rated Electric Car of 2017', 'Most Fuel Efficient Coupe of 2017', 'Best Luxury Car Under $35,000'][slides.length % 8],
+      image: ['/images/slides/fordRaptor.png','/images/slides/bmwx4.png','/images/slides/porche911.png','/images/slides/acura.jpg', '/images/slides/honda.jpg', '/images/slides/ford.png', '/images/slides/fiat.png', '/images/slides/lexus.png'][slides.length % 8],
       id: currIndex++
     });
   }
 
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < 8; i++) {
     $scope.addSlide();
   }
 

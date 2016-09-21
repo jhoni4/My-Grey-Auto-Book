@@ -13,25 +13,25 @@
             <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-2x" style="margin-top:10px; padding-left:40px;">photos</i></a>
           </div>
           <div class="col s3">
-            <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'><h3>Overall Summary</h3></a>
+            <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='500' uib-tooltip='click to see more'><h3>Overall Summary</h3></a>
           </div>
           <div class="col s3">
-            <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" tooltip-popup-close-delay='1000' uib-tooltip='click to see chart'><h3><i class="fa fa-bar-chart" aria-hidden="true"></i>Chart Summary</h3></a>
+            <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" tooltip-popup-close-delay='1000' uib-tooltip='click to see chart'><h3><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp;Chart Summary</h3></a>
           </div>
           <div class="col s3" style="margin-top:10px;">
-            <a href="" class=" btn blue right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Add To My Favorite</a>
+            <a href="" class=" btn blue right" ng-click="addToFb(item)">Add To My Favorite</a>
           </div>
         </div>
       </div>
       <div class="container">
         <div uib-collapse="isCollapsed">
-          <div class="well well-lg"><h3>{{item.summary}}</h3></div>
+          <div class="well well-sm"><h3>{{item.summary}}</h3></div>
         </div>
       </div>
       <div class="container">
         <div uib-collapse="isCollapsedHorizontal">
-          <div class="well well-lg">
-            <div class="col s4 left" style="margin-left:1%;">
+          <div class="well well-sm black">
+            <div class="col s4 left" style="margin-left:10%;">
               <fusioncharts
                  width="800"
                  height="600"
@@ -63,7 +63,7 @@
           </tr>
           <tr>
             <td>
-              <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'>
+              <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='500' uib-tooltip='click to see more'>
                 <p>{{z.title}} Summary</p>
               </a>
             </td>
