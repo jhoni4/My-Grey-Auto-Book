@@ -1,22 +1,50 @@
 
-    <div class="col s8 offset-s1" style="background: url('images/slides/pannel.jpg') no-repeat; color:lime; padding-right: 1%;"></div>
+    <!-- <div class="col s8 offset-s1" style="background: url('images/slides/pannel.jpg') no-repeat; color:lime; padding-right: 1%;"></div> -->
     <!-- <div class="off-col-2" style="background: url('images/slides/pannel.jpg') no-repeat; color:lime; padding-right: 1%;"> -->
+    <div class="container">
       <div class="center">
          <h1>{{item.year.year}}&nbsp;<br>{{item.make.name}}&nbsp;{{item.model.name}}</h1>
         <h3 style="color:white;">{{item.style.name}}</h3>
       </div>
-      <span>
-        <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-3x">photos</i></a>
-        <a href="" ng-click="creatChart(item)"><h3>Show Score chart</h3></a>
-        <a href="" class=" btn blue right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Add To My Favorite</a>
-        <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'><h3>Overall Summary</h3></a>
-      </span>
+    </div>
+      <div class="container">
+        <div class="row" style="border: 1px solid grey">
+          <div class="col s3">
+            <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-2x" style="margin-top:10px; padding-left:40px;">photos</i></a>
+          </div>
+          <div class="col s3">
+            <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='1000' uib-tooltip='click to see more'><h3>Overall Summary</h3></a>
+          </div>
+          <div class="col s3">
+            <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" tooltip-popup-close-delay='1000' uib-tooltip='click to see chart'><h3><i class="fa fa-bar-chart" aria-hidden="true"></i>Chart Summary</h3></a>
+          </div>
+          <div class="col s3" style="margin-top:10px;">
+            <a href="" class=" btn blue right" ng-click="addToFb(item)" onclick="Materialize.toast('Saved To Favorites!', 3000)">Add To My Favorite</a>
+          </div>
+        </div>
+      </div>
+      <div class="container">
         <div uib-collapse="isCollapsed">
           <div class="well well-lg"><h3>{{item.summary}}</h3></div>
         </div>
-    </div>
-
-    <div class="col s6 offset-s6 z-depth-4 right" style="margin-right:1%;">
+      </div>
+      <div class="container">
+        <div uib-collapse="isCollapsedHorizontal">
+          <div class="well well-lg">
+            <div class="col s4 left" style="margin-left:1%;">
+              <fusioncharts
+                 width="800"
+                 height="600"
+                 type="column3d"
+                 dataSource="{{myDataSource}}" >
+              </fusioncharts>
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="container">
+  <div class="row">
+    <div class=".col-md-4 .offset-md-4">
       <table class="table striped">
         <thead>
           <tr>
@@ -41,20 +69,12 @@
             </td>
             <td>
               <div uib-collapse="isCollapsed">
-                <div class="well well-lg"><p>{{z.summary}}</p></div>
+                <div class="well well-sm"><p>{{z.summary}}</p></div>
               </div>
             </td>
           </tr>
           </tbody>
       </table>
     </div>
-  </div>
-  <div class="col s4 left" style="margin-left:1%;">
-    <fusioncharts
-       width="800"
-       height="600"
-       type="column3d"
-       dataSource="{{myDataSource}}" >
-    </fusioncharts>
   </div>
 </div>

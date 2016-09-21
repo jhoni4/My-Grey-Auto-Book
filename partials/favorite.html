@@ -1,98 +1,98 @@
-<hr>
-<div class="container">
-<div class="box">
-    <div class="card col-md-4 off-4  #e0e0e0 grey" ng-repeat="j in favorites" style="margin-right: 5px;">
-      <div class="col-content">
-        <div class="card-content  white-text">
-        <span><h3 class="card-header">{{j.year}}&nbsp;{{j.make}}&nbsp;{{j.model}}</h3></span>
-          <p>{{j.style}}</p>
-          <hr>
-          <ul>
-            <li>
-              <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Performance Detail</a>
-            </li>
-            <li>
-              <div uib-collapse="isCollapsed">
-                <div class="well well-lg" style="color:brown;">
-                  <h4>Score :&nbsp; {{j.ratings.performanceScore}}</h4>
-                  <h4>Summary :</h4>&nbsp;{{j.ratings.performanceSummary}}
-                </div>
-              </div>
-            </li>
-            <li>
-              <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Comfort Detail</a>
-            </li>
-            <li>
-              <div uib-collapse="isCollapsed">
-                <div class="well well-lg" style="color:brown;">
-                  <h4>Score :&nbsp; {{j.ratings.comfortScore}}</h4>
-                  <h4>Summary :</h4>&nbsp;{{j.ratings.comfortSummary}}
-                </div>
-              </div>
-            </li>
-            <li>
-              <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Interior Detail</a>
-            </li>
-            <li>
-              <div uib-collapse="isCollapsed">
-                <div class="well well-lg" style="color:brown;">
-                  <h4>Score :&nbsp; {{j.ratings.interiorScore}}</h4>
-                  <h4>Summary :</h4>&nbsp;{{j.ratings.interiorSummary}}
-                </div>
-              </div>
-            </li>
-            <li>
-              <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Fun To Drive Detail</a>
-            </li>
-            <li>
-              <div uib-collapse="isCollapsed">
-                <div class="well well-lg" style="color:brown;">
-                  <h4>Score :&nbsp; {{j.ratings.funToDriveScore}}</h4>
-                  <h4>Summary :</h4>&nbsp;{{j.ratings.funToDriveSummary}}
-                </div>
-              </div>
-            </li>
-             <li>
-              <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Value Detail</a>
-            </li>
-            <li>
-              <div uib-collapse="isCollapsed">
-                <div class="well well-lg" style="color:brown;">
-                  <h4>Score :&nbsp; {{j.ratings.funToDriveScore}}</h4>
-                  <h4>Summary :</h4>&nbsp;{{j.ratings.valueSummary}}
-                </div>
-              </div>
-            </li>
-            <li>
-              <a href="" style="color:white;">Overall Summary</a>
-            </li>
-          </ul>
-          <div style="overflow:auto;">
-            {{j.summary}}
-          </div>
-          <p>Comments :&nbsp;{{j.comment}}</p>
-        </div>
-        <div class="card-action grey darken-1">
-         <a ng-click="deleteCar(j.carId)" href="">
-           <i class="fa fa-trash-o fa-lg"></i> Delete</a>
-          <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" style="color:lime;">Add comment</a>
-            <li>
-              <div uib-collapse="isCollapsedHorizontal">
-                <div class="well well-lg" style="color:brown; font-size:1em;">
-                    <label style="color:brown; font-size:1em;">Personal comment</label>
-                    <input type="text" style="color:brown; font-size:1em;" placeholder="Add comment..." ng-model="editedCar.comment" />
-                  <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" ng-click="saveComment(j.carId)">Save</button>
+<div class="page3" style="background-image: url('images/slides/background2.png');">
+  <div class="container">
+    <div class="box" style="margin-left: 10%;">
+      <div class="card col-lg-5  #e0e0e0 grey" ng-repeat="j in favorites" style="margin:40px;">
+        <div class="col-content">
+          <div class="card-content  white-text">
+          <span><h3 class="card-header">{{j.year}}&nbsp;{{j.make}}&nbsp;{{j.model}}</h3></span>
+            <p>{{j.style}}</p>
+            <hr>
+            <ul>
+              <li>
+                <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Performance Detail</a>
+              </li>
+              <li>
+                <div uib-collapse="isCollapsed">
+                  <div class="well well-lg" style="color:brown;">
+                    <h4>Score :&nbsp; {{j.ratings.performanceScore}}</h4>
+                    <h4>Summary :</h4>&nbsp;{{j.ratings.performanceSummary}}
                   </div>
                 </div>
-              </div>
-            </li>
+              </li>
+              <li>
+                <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Comfort Detail</a>
+              </li>
+              <li>
+                <div uib-collapse="isCollapsed">
+                  <div class="well well-lg" style="color:brown;">
+                    <h4>Score :&nbsp; {{j.ratings.comfortScore}}</h4>
+                    <h4>Summary :</h4>&nbsp;{{j.ratings.comfortSummary}}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Interior Detail</a>
+              </li>
+              <li>
+                <div uib-collapse="isCollapsed">
+                  <div class="well well-lg" style="color:brown;">
+                    <h4>Score :&nbsp; {{j.ratings.interiorScore}}</h4>
+                    <h4>Summary :</h4>&nbsp;{{j.ratings.interiorSummary}}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Fun To Drive Detail</a>
+              </li>
+              <li>
+                <div uib-collapse="isCollapsed">
+                  <div class="well well-lg" style="color:brown;">
+                    <h4>Score :&nbsp; {{j.ratings.funToDriveScore}}</h4>
+                    <h4>Summary :</h4>&nbsp;{{j.ratings.funToDriveSummary}}
+                  </div>
+                </div>
+              </li>
+               <li>
+                <a href="" ng-click="isCollapsed = !isCollapsed" style="color:lime;">Value Detail</a>
+              </li>
+              <li>
+                <div uib-collapse="isCollapsed">
+                  <div class="well well-lg" style="color:brown;">
+                    <h4>Score :&nbsp; {{j.ratings.funToDriveScore}}</h4>
+                    <h4>Summary :</h4>&nbsp;{{j.ratings.valueSummary}}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a href="" style="color:white;">Overall Summary</a>
+              </li>
+            </ul>
+            <div style="overflow:auto;">
+              {{j.summary}}
+            </div>
+            <p>Comments :&nbsp;{{j.comment}}</p>
+          </div>
+          <div class="card-action grey darken-1">
+           <a ng-click="deleteCar(j.carId)" href="">
+             <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+            <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" style="color:lime;"><i class="fa fa-commenting-o" aria-hidden="true"></i> Add comment</a>
+              <li>
+                <div uib-collapse="isCollapsedHorizontal">
+                  <div class="well well-lg" style="color:brown; font-size:1em;">
+                      <label style="color:brown; font-size:1em;">Personal comment</label>
+                      <input type="text" style="color:brown; font-size:1em;" placeholder="Add comment..." ng-model="editedCar.comment" />
+                    <div class="modal-footer">
+                      <button class="btn btn-primary" type="button" ng-click="saveComment(j.carId)">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="col s4 left" style="margin-left:1%;">
+  <div class="col s4 left" style="margin-left:20%;">
     <fusioncharts
        width="800"
        height="600"
@@ -100,3 +100,4 @@
        dataSource="{{favoriteSource}}" >
     </fusioncharts>
   </div>
+</div>

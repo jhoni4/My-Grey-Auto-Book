@@ -68,32 +68,8 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) {
   };
 
 
-    // .then( (searchObj) => {
-    //   // console.log("DATA", SearchFactory.getCar());
-    //   $scope.item = searchObj;
-    //   // console.log("newSearch", searchObj.ratings[0].score);
-    //   // console.log("item", $scope.item);
 
-    //   return searchObj;
-    // });
-
-//CHART//////////////////
-
-  $scope.creatChart = (searchObj) => {
-    console.log("am clicked", searchObj)
-    $scope.myDataSource.chart.caption = searchObj.make.name;
-    $scope.myDataSource.chart.subCaption = searchObj.model.name;
-    $scope.myDataSource.data[0].value = searchObj.ratings[0].score;
-    $scope.myDataSource.data[1].value = searchObj.ratings[1].score;
-    $scope.myDataSource.data[2].value = searchObj.ratings[2].score;
-    $scope.myDataSource.data[3].value = searchObj.ratings[3].score;
-    $scope.myDataSource.data[4].value = searchObj.ratings[4].score;
-    console.log("CHART ITEM", $scope.myDataSource.chart.caption);
-  };
-
-
-
-$scope.myDataSource = {
+    $scope.myDataSource = {
         chart: {
             caption: "",
             subCaption: "",
@@ -119,6 +95,23 @@ $scope.myDataSource = {
             value: ""
         }]
       };
+
+//CHART//////////////////
+  $scope.createChart = (searchObj) => {
+    console.log("am clicked", searchObj);
+    $scope.myDataSource.chart.caption = searchObj.make.name;
+    $scope.myDataSource.chart.subCaption = searchObj.model.name;
+    $scope.myDataSource.data[0].value = searchObj.ratings[0].score;
+    $scope.myDataSource.data[1].value = searchObj.ratings[1].score;
+    $scope.myDataSource.data[2].value = searchObj.ratings[2].score;
+    $scope.myDataSource.data[3].value = searchObj.ratings[3].score;
+    $scope.myDataSource.data[4].value = searchObj.ratings[4].score;
+    console.log("CHART ITEM", $scope.myDataSource.chart.caption);
+  };
+
+$scope.createChart($scope.item);
+
+
 
 
 
