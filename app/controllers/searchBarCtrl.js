@@ -2,20 +2,19 @@
 
 app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location) {
 
-//API DATA GETTER CONTROLLERS
-  // $scope.item;
   $scope.xx = [];
 
+//API DATA GETTER CONTROLLERS
   $scope.runSearchResult = () => {
     $scope.xx.make = $scope.cars.makes[$scope.selectedCarMake].name;
     $scope.xx.model = $scope.cars.makes[$scope.selectedCarMake].models[$scope.selectedCarModel].name;
     $scope.xx.year = $scope.carYears[$scope.selectedCarYear].year;
     $scope.xx.style = $scope.selectedCarStyle;
-    console.log("TEST FOR XX", $scope.xx);
+    // console.log("TEST FOR XX", $scope.xx);
     SearchFactory.getSearchResult($scope.xx)
     .then( (searchObj) => {
       $scope.item = searchObj;
-      console.log("searchObj", searchObj);
+      // console.log("searchObj", searchObj);
       SearchFactory.addItems(searchObj);
       // console.log("TEST FOR SEARCHOBJ", $scope.item);
       // console.log("TEST FOR SEARCHOBJyear", $scope.item.year.year);
@@ -27,6 +26,8 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 
 
 
+// DROP DROWN CONTROLLERS////////////////////////////////////////////
+// DROP DROWN CONTROLLERS////////////////////////////////////////////
 // DROP DROWN CONTROLLERS////////////////////////////////////////////
 
   $scope.selectedCarMake = "";
@@ -50,7 +51,7 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
   });
 
 
-// ON CHANGE drop down  EVENT LISTENER
+// ON CHANGE drop down  EVENT LISTENER/////////
 
   $scope.update = function() {
     $scope.carModels = $scope.cars.makes[$scope.selectedCarMake].models;
@@ -62,7 +63,8 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
 
 
 //////////////////////////////////////////////////////////////////////////
-//SLIDE PICTURES
+//SLIDE PICTURES////////////////////////////////////////////////////////
+//SLIDE PICTURES////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -79,7 +81,6 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
       id: currIndex++
     });
   }
-
   for (var i = 0; i < 8; i++) {
     $scope.addSlide();
   }

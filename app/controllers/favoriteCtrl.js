@@ -32,12 +32,12 @@ app.controller("FavoriteCtrl", function($scope, SearchFactory)  {
   });
 
 $scope.calculateAverage = function(MyData){
-  console.log("MyData", MyData);
+  // console.log("MyData", MyData);
     var sum = 0;
     sum += parseInt(MyData.comfortScore+MyData.funToDriveScore+MyData.interiorScore+MyData.performanceScore+MyData.valueScore, 10); //don't forget to add the base }
-   console.log("sum", sum);
+   // console.log("sum", sum);
     var avg = sum/5;
-   console.log("avg", avg);
+   // console.log("avg", avg);
 
     return avg;
 };
@@ -71,7 +71,7 @@ $scope.calculateAverage = function(MyData){
       // console.log("$scope.editedCar.comment", $scope.editedCar.comment);
      SearchFactory.getSingleCarFromFb(carId)
      .then( (favObj) => {
-      console.log("favObj", favObj);
+      // console.log("favObj", favObj);
       favObj.comment = $scope.editedCar.comment;
       $scope.editedCar = favObj;
     // console.log("favObj.comment", favObj.comment);

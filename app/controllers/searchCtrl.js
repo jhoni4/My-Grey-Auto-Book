@@ -53,7 +53,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
   };
 
   $scope.addToFb = (searchObj) => {
-    console.log("searchObj", searchObj);
+    // console.log("searchObj", searchObj);
     $scope.newSearch.make = searchObj.make.name;
     $scope.newSearch.model = searchObj.model.name;
     $scope.newSearch.style = searchObj.style.name;
@@ -69,7 +69,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
     $scope.newSearch.ratings.funToDriveScore = searchObj.ratings[4].score;
     $scope.newSearch.ratings.funToDriveSummary = searchObj.ratings[4].summary;
     $scope.newSearch.summary = searchObj.summary;
-    console.log("newSearch", $scope.newSearch);
+    // console.log("newSearch", $scope.newSearch);
     SearchFactory.postSearchToFb($scope.newSearch)
     .then(
       (data) => console.log('search saved!', $scope.newSearch),
@@ -110,7 +110,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
 
 
   $scope.createChart = (searchObj) => {
-    console.log("am clicked", searchObj);
+    // console.log("am clicked", searchObj);
     $scope.myDataSource.chart.caption = searchObj.make.name;
     $scope.myDataSource.chart.subCaption = searchObj.model.name;
     $scope.myDataSource.data[0].value = searchObj.ratings[0].score;
@@ -118,7 +118,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory ) { //$mdToast
     $scope.myDataSource.data[2].value = searchObj.ratings[2].score;
     $scope.myDataSource.data[3].value = searchObj.ratings[3].score;
     $scope.myDataSource.data[4].value = searchObj.ratings[4].score;
-    console.log("CHART ITEM", $scope.myDataSource.chart.caption);
+    // console.log("CHART ITEM", $scope.myDataSource.chart.caption);
   };
 
 $scope.createChart($scope.item);

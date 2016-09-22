@@ -3,8 +3,8 @@
    <div class="row silver" style="color:white;">
      <div class="col s2">
       <span>Make of vehicle :</span>
-        <select id="make" class='dropdown-button btn #616161 grey darken-1' ng-model="selectedCarMake" ng-change="update()">
-          <option  ng-repeat="x in cars.makes" value="{{$index}}" style="color:white;">{{x.name}}</option>
+        <select id="make" class='dropdown-button btn #616161 grey darken-1' ng-model="selectedCarMake" ng-change="update()" style="color:white; overflow:auto;">
+          <option  ng-repeat="x in cars.makes" value="{{$index}}" >{{x.name}}</option>
         </select>
      </div>
     <div class="col s2">

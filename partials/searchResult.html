@@ -10,7 +10,7 @@
       <div class="container">
         <div class="row" style="border: 1px solid grey">
           <div class="col s3">
-            <a href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-2x" style="margin-top:10px; padding-left:40px;">photos</i></a>
+            <a target="_blank" href='https://www.google.com/search?q={{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}&tbm=isch'><i class="fa fa-camera-retro fa-2x" style="margin-top:10px; padding-left:40px;">photos</i></a>
           </div>
           <div class="col s3">
             <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='500' uib-tooltip='click to see more'><h3>Overall Summary</h3></a>
@@ -36,6 +36,7 @@
                  width="800"
                  height="600"
                  type="column3d"
+                 backgroundColor="#4DC0CF"
                  dataSource="{{myDataSource}}" >
               </fusioncharts>
             </div>
@@ -44,7 +45,7 @@
       </div>
   <div class="container">
   <div class="row">
-    <div class=".col-md-4 .offset-md-4">
+    <div class="col s6 push-s3">
       <table class="table striped">
         <thead>
           <tr>
