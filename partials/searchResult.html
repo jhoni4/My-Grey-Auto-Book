@@ -8,10 +8,10 @@
   <div class="container">
     <div class="row">
       <div class="col s6 carpic morph">
-        <img ng-src="{{photo1.cool1 || '/images/slides/noimage.jpg'}}" width="500" height="300">
+        <img ng-src="{{photo1.cool1 || '/images/slides/noimage.jpg'}}">
       </div>
       <div class="col s6 carpic morph">
-        <img ng-src="{{photo1.cool2 || '/images/slides/noimage.jpg'}}" width="500" height="300">
+        <img ng-src="{{photo1.cool2 || '/images/slides/noimage.jpg'}}">
       </div>
     </div>
   </div>
@@ -34,56 +34,51 @@
     </div>
   </div>
   <br>
-      <flash-message>
-        <div class="my-flash">{{ flash.text }}</div>
-      </flash-message>
+  <flash-message>
+    <div class="my-flash">{{ flash.text }}</div>
+  </flash-message>
   <br>
-    <div class="container">
-      <div uib-collapse="isCollapsed">
-        <div class="well well-sm"><p>{{item.summary}}</p></div>
+  <div class="container" uib-collapse="isCollapsedHorizontal">
+    <div class="well well-sm black">
+      <div class="col s4 left" style="margin-left:10%;">
+        <fusioncharts
+           width="800"
+           height="400"
+           type="pie3d"
+           backgroundColor="#595959"
+           dataSource="{{myDataSource}}" >
+        </fusioncharts>
       </div>
     </div>
-  <div class="divider"></div><br>
-      <div class="container" uib-collapse="isCollapsedHorizontal">
-        <div class="well well-sm black">
-          <div class="col s4 left" style="margin-left:10%;">
-            <fusioncharts
-               width="800"
-               height="400"
-               type="pie3d"
-               backgroundColor="#595959"
-               dataSource="{{myDataSource}}" >
-            </fusioncharts>
-          </div>
-        </div>
-      </div>
-  <div class="container">
+  </div>
+
+  <div class="container" uib-collapse="isCollapsed">
     <div class="row">
       <div class="col s6 push-s3">
+        <div class="well well-sm black" style="color:white;"><p>{{item.summary}}</p></div>
+        <div class="divider"></div><br>
         <table class="table striped">
           <thead>
             <tr class="pannel2" style="text-shadow: -1px -1px 1px #fff;">
               <th class=""><h4>Rating Parameter</h4></th>
-              <th class=""><h4>Ratings</h4></th>
+              <th class=""><h4>Score Ratings</h4></th>
+              <th class=""><h4>Grade Ratings</h4></th>
             </tr>
           </thead>
           <tbody ng-repeat ="z in item.ratings">
             <tr>
-              <td style="color:black;"><p>{{z.title}} score :</p></td>
+              <td style="color:black;"><p>{{z.title}}</p></td>
               <td style="color:black;"><p>{{z.score}}</p></td>
-            </tr>
-            <tr>
-              <td style="color:white;"><p>{{z.title}} grade :</p></td>
-              <td style="color:white;"><p>{{z.grade}}</p></td>
+              <td style="color:black;"><p>{{z.grade}}</p></td>
             </tr>
             <tr>
               <td>
-                <a href="" ng-click="isCollapsed = !isCollapsed" tooltip-popup-close-delay='500' uib-tooltip='click to see more'>
+                <a href="" ng-click="isCollapsedHorizontal = !isCollapsedHorizontal" tooltip-popup-close-delay='500' uib-tooltip='click to see more'>
                   <p>{{z.title}} Summary</p>
                 </a>
               </td>
               <td>
-                <div uib-collapse="isCollapsed">
+                <div uib-collapse="isCollapsedHorizontal">
                   <div class="well well-sm"><p>{{z.summary}}</p></div>
                 </div>
               </td>

@@ -23,9 +23,9 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
   let getPicture = (data1) => {
     return $q((resolve, reject)=>{
+      $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
       // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
-      // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
-      $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=n7u7q8yqj78kyk4qy66zb3nj`)
+      // $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=n7u7q8yqj78kyk4qy66zb3nj`)
       .success((imageObject)=>{
         resolve(imageObject);
         console.log("imageObject", imageObject);
