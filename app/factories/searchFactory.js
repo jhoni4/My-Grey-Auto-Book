@@ -23,8 +23,9 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
   let getPicture = (data1) => {
     return $q((resolve, reject)=>{
-      $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
       // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
+      // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
+      $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=cesw7u9cfkph84sp73wt2yem`)
       // $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=n7u7q8yqj78kyk4qy66zb3nj`)
       .success((imageObject)=>{
         resolve(imageObject);
@@ -36,14 +37,14 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
     });
   };
 
-  let addPics = function(photoObj) {
-    pics = photoObj;
-    console.log("PICS", pics);
-  };
+  // let addPics = function(photoObj) {
+  //   pics = photoObj;
+  //   console.log("PICS", pics);
+  // };
 
-  let getPics = function() {
-    return pics;
-  };
+  // let getPics = function() {
+  //   return pics;
+  // };
 
 
   let postSearchToFb = (newItem) => {
@@ -146,6 +147,6 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
 
 
-  return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb, getPicture, addPics, getPics};
+  return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb, getPicture};
 });
 
