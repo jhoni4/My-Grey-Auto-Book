@@ -74,7 +74,7 @@
               <li>
                 <div uib-collapse="isCollapsed">
                   <div class="well well-lg" style="color:brown;">
-                    <h4>Score :&nbsp; {{j.ratings.funToDriveScore}}</h4>
+                    <h4>Score :&nbsp; {{j.ratings.valueScore}}</h4>
                     <h4>Summary :</h4>&nbsp;{{j.ratings.valueSummary}}
                   </div>
                 </div>
@@ -84,7 +84,7 @@
               </li>
             </ul>
             <div style="overflow:auto;">
-              {{j.summary}}
+              {{j.summary}} <br> Address :&nbsp;<a target="_blank" href="http://maps.google.com/?q={{j.location}}">{{j.location}}</a>
             </div>
             <p>Comments :&nbsp;{{j.comment}}</p>
           </div>

@@ -26,16 +26,7 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
     });
 
   };
-  // $scope.getPhoto = () => {
-  //   console.log("$scope.XXXX", $scope.xx);
-  //   SearchFactory.getPicture($scope.xx)
-  //   .then( (imgSearch) => {
-  //     console.log("imgSearch", imgSearch);
-  //     $scope.pic = imgSearch;
-  //     SearchFactory.addPics(imgSearch);
-  //     console.log("TEST FOR PIC", $scope.pic);
-  //   });
-  // };
+
 
 
 // DROP DROWN CONTROLLERS////////////////////////////////////////////
@@ -103,13 +94,6 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
   }
 
 /////////////
-
-
-
-
-
-
-
 
 
 

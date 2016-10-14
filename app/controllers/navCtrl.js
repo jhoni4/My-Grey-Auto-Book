@@ -12,12 +12,6 @@ app.controller("NavCtrl", function($scope, AuthFactory) {
         "And another choice for you.",
         "but wait! A third!"
     ];
-// $scope.logOut = () => {
-//     console.log("you clicked logOut");
-//     AuthFactory.logoutUser($scope.account)
-//     .then( (data) => {
-//       console.log("you are logged out, man");
-//     });
-//   };
+
 
 });

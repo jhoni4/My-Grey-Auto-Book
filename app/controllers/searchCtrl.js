@@ -1,10 +1,11 @@
 'use strict';
 
-app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeout) {
+app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeout, $q, $http) {
 
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
   $scope.zz = {};
+  $scope.Adress = {};
 
   $scope.item = SearchFactory.getItems();
   console.log("$scope.item", $scope.item);
@@ -53,6 +54,29 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   };
 
 
+ /////// //GEO LOCATION //////////////////////////////////
+  /////// //GEO LOCATION //////////////////////////////////
+  /////// //GEO LOCATION //////////////////////////////////
+
+
+  navigator.geolocation.getCurrentPosition(myPos);
+  function myPos(position) {
+    var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true";
+    return $q( (resolve, reject) => {
+      $http.get(url)
+      .success( (result) => {
+              $scope.address = result;
+            console.log($scope.address.results[0].formatted_address);
+      })
+      .error( (error) => {
+        reject(error);
+      });
+    });
+  };
+
+
 
 
 
@@ -80,12 +104,14 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
       },
     summary: "",
     comment: "",
+    location: "",
     cardId: SearchFactory.getCarId()
 
   };
 
   $scope.addToFb = (searchObj) => {
     $scope.success();
+    $scope.newSearch.location = $scope.address.results[0].formatted_address;
     // console.log("searchObj", searchObj);
     $scope.newSearch.make = searchObj.make.name;
     $scope.newSearch.model = searchObj.model.name;
