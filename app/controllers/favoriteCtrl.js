@@ -18,36 +18,34 @@ app.controller("FavoriteCtrl", function($scope, SearchFactory)  {
   });
 
 
-$scope.calculateAverage = function(MyData){
+ $scope.calculateAverage = function(MyData){
   // console.log("MyData", MyData);
     var sum = 0;
-    sum += parseInt(MyData.comfortScore+MyData.funToDriveScore+MyData.interiorScore+MyData.performanceScore+MyData.valueScore, 10); //don't forget to add the base }
+    sum += parseInt(MyData.comfortScore+MyData.funToDriveScore+MyData.interiorScore+MyData.performanceScore+MyData.valueScore, 10); //don't forget to add the base
    // console.log("sum", sum);
     var avg = sum/5;
    // console.log("avg", avg);
-
     return avg;
-};
+ };
 
 
 
 
 
- $scope.deleteCar = (carId) => {
-  console.log("carId", carId);
-  // console.log("carId", carId);
-  SearchFactory.deleteFavFromFirebase(carId)
-  .then( (response) => {
-    SearchFactory.getFavoriteFromFb()
-    .then( (favObj) => {
-      $scope.favorites = favObj;
-      $scope.favorites.ratings = favObj.ratings;
-
-      // console.log("favorites", favorites);
+  $scope.deleteCar = (carId) => {
+    console.log("carId", carId);
+    // console.log("carId", carId);
+    SearchFactory.deleteFavFromFirebase(carId)
+    .then( (response) => {
+      SearchFactory.getFavoriteFromFb()
+      .then( (favObj) => {
+        $scope.favorites = favObj;
+        $scope.favorites.ratings = favObj.ratings;
+        // console.log("favorites", favorites);
+      });
     });
-  });
 
-};
+  };
 
   $scope.editedCar = {};
 
@@ -78,13 +76,13 @@ $scope.calculateAverage = function(MyData){
 //chart favorite///////////////json
 //chart favorite///////////////json
 
-$scope.favoriteSource = {
-        chart: {
-            caption: "These are your favorites picks",
-            subCaption: "with their overall average rating",
-        },
-        data:[]
-      };
+  $scope.favoriteSource = {
+    chart: {
+      caption: "These are your favorites picks",
+      subCaption: "with their overall average rating",
+    },
+    data:[]
+  };
 
 
 

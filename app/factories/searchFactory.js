@@ -5,6 +5,7 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
    var pics = {};
    var carId = [];
 
+///To get rating data search
   let getSearchResult = (data) => {
     return $q((resolve, reject)=>{
       $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data.make}/${data.model}/${data.year}?submodel=${data.style}&fmt=json&api_key=uz4dyu9c64rjgfjrbq47kbff`)
@@ -20,15 +21,33 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
   };
 
 
+
   let getPicture = (data1) => {
     return $q((resolve, reject)=>{
-
       // $http.get(`https://api.edmunds.com/api/vehicle/v2/grade/${data1.make}/${data1.model}/${data1.year}?submodel=${data1.style}&fmt=json&api_key=stj8vjhyhjpgaqfds6j6fc5t`)
-      $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=cesw7u9cfkph84sp73wt2yem`)
-      // $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=n7u7q8yqj78kyk4qy66zb3nj`)
+      // $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=cesw7u9cfkph84sp73wt2yem`)
+      $http.get(`https://api.edmunds.com/api/media/v2/${data1.make}/${data1.model}/${data1.year}/photos?category=exterior&width=600&shottype=FQ&pagenum=1&pagesize=10&view=basic&fmt=json&api_key=n7u7q8yqj78kyk4qy66zb3nj`)
       .success((imageObject)=>{
         resolve(imageObject);
         console.log("imageObject", imageObject);
+      })
+      .error((error)=>{
+        reject(error);
+      });
+    });
+  };
+
+
+  ///To get the nearest dealership address data search
+
+  let getDealership = (data2) => {
+        console.log("data2", data2);
+    return $q((resolve, reject)=>{
+      $http.get(`http://api.edmunds.com/api/dealer/v2/dealers/?zipcode=37210&radius=50&make=${data2.make}&state=new&pageNum=1&pageSize=4&sortby=distance%3AASC&view=basic&api_key=uz4dyu9c64rjgfjrbq47kbff`)
+      .success((addressObject)=>{
+        resolve(addressObject);
+        console.log("data2", data2);
+        console.log("addressObject", addressObject);
       })
       .error((error)=>{
         reject(error);
@@ -109,6 +128,7 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
     });
   };
 
+
   let setCarId = (id) => {
     carId = id;
     console.log(carId);
@@ -133,6 +153,6 @@ app.factory("SearchFactory", ($q, $http, FirebaseURL) => {
 
 
 
-  return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb, getPicture};
+  return {getSearchResult, postSearchToFb, addItems, getItems, getFavoriteFromFb, deleteFavFromFirebase, setCarId, getCarId, updateCar, getSingleCarFromFb, getPicture, getDealership};
 });
 

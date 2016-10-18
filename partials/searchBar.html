@@ -1,6 +1,6 @@
 <div style="margin-top:150px; position: fixed;">
- <div class="container hoverable">
-   <div class="row" style="color:white; margin-left: 10%;">
+ <div class="container hoverable" style="color:white; margin-left: 4%;">
+   <div class="row">
     <div class="col s2">
       <span>Make of vehicle :</span>
       <select id="make" class='dropdown-button btn pannel3' ng-model="selectedCarMake" ng-change="update()" style="color:white; overflow:auto;">
@@ -34,7 +34,7 @@
   <div class="divider"></div>
 </div>
 
-  <div style="height: 405px">
+  <div style="height: 405px; margin-left: 8%;">
     <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
       <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
           <p style="font-size:2em; color:white; -webkit-text-stroke: 1px grey;">{{slide.text}}</p>

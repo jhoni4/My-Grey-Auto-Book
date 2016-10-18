@@ -5,14 +5,16 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
   $scope.zz = {};
-  $scope.Adress = {};
+  $scope.Dealers = {};
+
+
+
 
   $scope.item = SearchFactory.getItems();
-  console.log("$scope.item", $scope.item);
+  // console.log("$scope.item", $scope.item);
   // console.log("$scope.pics", $scope.pics);
   //now we have  $scope.item
   //now we have  $scope.pics
-  // $scope.pic = SearchFactory.getPics();
   // console.log("$scope.pic", $scope.pic);
   $scope.zz.make = $scope.item.make.name;
   $scope.zz.model = $scope.item.model.name;
@@ -20,12 +22,15 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   $scope.zz.style = $scope.item.style.submodel.body;
 
 
+   //////GET PHOTO////////////
+  //////GET PHOTO////////////
+  //////GET PHOTO////////////
 
   $scope.getPhoto = () => {
     // console.log("$scope.ZZZZ", $scope.zz);
     SearchFactory.getPicture($scope.zz)
     .then( (imgSearch) => {
-      console.log("imgSearch", imgSearch);
+      // console.log("imgSearch", imgSearch);
       $scope.photo1.cool1 = "http://media.ed.edmunds-media.com" + imgSearch.photos[0].sources[0].link.href;
       $scope.photo1.cool2 = "http://media.ed.edmunds-media.com" + imgSearch.photos[1].sources[0].link.href;
       // console.log("TEST FOR photo1", $scope.photo1);
@@ -44,17 +49,8 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   // console.log("$scope.photo1", $scope.photo1);
   // console.log("$scope.photo1.cool1", $scope.photo1.cool1);
 
-  //////FLASH////////////
-  //////FLASH////////////
-  //////FLASH////////////
 
-  $scope.success = function() {
-    var message = '<strong>Well done!</strong> You successfully saved it to favorites.';
-    Flash.create('success', message, 2000);
-  };
-
-
- /////// //GEO LOCATION //////////////////////////////////
+   /////// //GEO LOCATION //////////////////////////////////
   /////// //GEO LOCATION //////////////////////////////////
   /////// //GEO LOCATION //////////////////////////////////
 
@@ -67,14 +63,32 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
     return $q( (resolve, reject) => {
       $http.get(url)
       .success( (result) => {
-              $scope.address = result;
-            console.log($scope.address.results[0].formatted_address);
+        $scope.address = result;
+        $scope.zz.zipcode = parseInt(result.results[0].address_components[6].long_name);
+        console.log("ADDRESS", $scope.address.results[0].formatted_address);
+        console.log("$scope.zz.zipcode", $scope.zz.zipcode);
+        console.log("ZIPCODE", $scope.address.results[0].address_components[6].long_name);
       })
       .error( (error) => {
         reject(error);
       });
     });
   };
+
+
+
+
+
+
+  //////FLASH////////////
+  //////FLASH////////////
+  //////FLASH////////////
+
+  $scope.success = function() {
+    var message = '<strong>Well done!</strong> You successfully saved it to favorites.';
+    Flash.create('success', message, 2000);
+  };
+
 
 
 
@@ -137,7 +151,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   };
 
 
-  ////////////CHART//////////////////
+  ////////////PIECHART//////////////////
   ////////////CHART//////////////////
   ////////////CHART//////////////////
 
@@ -197,6 +211,21 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   };
 
    $scope.createChart($scope.item);
+
+
+
+
+
+////// DEALERS ADDRESSS////////////
+  ////// DEALERS ADDRESSS////////////
+  ////// DEALERS ADDRESSS////////////
+
+  SearchFactory.getDealership($scope.zz)
+  .then ( (kk) => {
+    $scope.Dealers = kk;
+  console.log("$scope.Dealers", $scope.Dealers);
+  });
+
 
 
 });
