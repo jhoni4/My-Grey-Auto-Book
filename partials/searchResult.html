@@ -29,8 +29,7 @@
       </div>
       <div class="card-stacked">
         <div class="card-content center">
-          <h2>{{item.year.year}}&nbsp;{{item.make.name}}&nbsp;</h2>
-          <h3>{{item.model.name}}</h3>
+          <h2>{{item.year.year}}&nbsp;{{item.make.name}}&nbsp;{{item.model.name}}</h2>
           <h4>{{item.style.name}}</h4><hr>
         </div>
         <div class="card-action">
@@ -49,15 +48,15 @@
            width="600"
            height="400"
            type="pie3d"
-           backgroundColor="#000"
+           backgroundColor="red"
            dataSource="{{myDataSource}}" >
         </fusioncharts>
       </div>
     </div>
   </div>
   <br>
-  <div class="container right" uib-collapse="isCollapsed">
-      <div class="col s8">
+  <div class="left" uib-collapse="isCollapsed">
+      <div class="col s6">
         <div class="divider"></div><br>
         <table class="table striped">
           <thead>
@@ -112,14 +111,14 @@
         <ul>
           <li>{{k.contactInfo.gpContactFirstName}}&nbsp;{{k.contactInfo.gpContactLastName}}</li>
           <li>
-            <i class="fa fa-phone" aria-hidden="true"></i>:&nbsp;{{k.contactInfo.phone}}
+            <i class="fa fa-phone" aria-hidden="true"></i>:&nbsp;<a href="tel:+{{k.contactInfo.phone}}">{{k.contactInfo.phone}}</a>
           </li>
           <li>
             <i class="fa fa-envelope-o" aria-hidden="true"></i>:&nbsp;{{k.contactInfo.gpContactEmail}}
           </li>
           <li>Website:&nbsp;
             <a href="{{k.contactInfo.website}}">{{k.contactInfo.website}}</a>
-          </li><hr>
+          </li><hr>z
         </ul>
       </div>
     </div>

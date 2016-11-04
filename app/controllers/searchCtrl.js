@@ -2,10 +2,11 @@
 
 app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeout, $q, $http) {
 
-  $scope.isCollapsed = true;
+  $scope.isCollapsed = false;
   $scope.isCollapsedHorizontal = true;
   $scope.zz = {};
   $scope.Dealers = {};
+
 
 
 
@@ -33,6 +34,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
       // console.log("imgSearch", imgSearch);
       $scope.photo1.cool1 = "http://media.ed.edmunds-media.com" + imgSearch.photos[0].sources[0].link.href;
       $scope.photo1.cool2 = "http://media.ed.edmunds-media.com" + imgSearch.photos[1].sources[0].link.href;
+      $scope.photo1.cool3 = "http://media.ed.edmunds-media.com" + imgSearch.photos[2].sources[0].link.href;
       // console.log("TEST FOR photo1", $scope.photo1);
       // console.log("COOL1", imgSearch.photos[0].sources[0].link.href);
 
@@ -225,6 +227,13 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
     $scope.Dealers = kk;
   console.log("$scope.Dealers", $scope.Dealers);
   });
+
+
+
+
+
+
+
 
 
 
