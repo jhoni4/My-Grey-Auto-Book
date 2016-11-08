@@ -1,0 +1,48 @@
+<div style="margin-top:150px; position: fixed;">
+ <div class="container hoverable" style="color:white; margin-left: 4%;">
+   <div class="row">
+    <div class="col s2">
+      <span>Make of vehicle :</span>
+      <select id="make" class='dropdown-button btn pannel3' ng-model="selectedCarMake" ng-change="update()" style="color:white; overflow:auto;">
+        <option  ng-repeat="x in cars.makes" value="{{$index}}" >{{x.name}}</option>
+      </select>
+    </div>
+    <div class="col s2">
+      <span>Model of vehicle :</span>
+      <select id="model" class='dropdown-button btn pannel3' ng-model="selectedCarModel" ng-change="update2()" ng-disabled="!selectedCarMake">
+      <option ng-repeat="y in carModels" value="{{$index}}">{{y.name}}</option>
+      </select>
+    </div>
+      <div class="col s2">
+        <span>Year of vehicle :</span>
+        <select id="year" class='dropdown-button btn pannel3' ng-model="selectedCarYear" ng-change="update()" ng-disabled="!selectedCarModel">
+        <option ng-repeat="z in carYears" value="{{$index}}">{{z.year}}</option>
+        </select>
+      </div>
+      <div class="col s2">
+        <span>Style of vehicle :</span>
+        <select id="style" class='dropdown-button btn pannel3' ng-model="selectedCarStyle" ng-change="update()" ng-disabled="!selectedCarYear">
+          <option ></option>
+        <option ng-repeat="k in carstyles" value="{{k}}">{{k}}</option>
+        </select>
+      </div>
+      <div class="col s2">
+        <button class="btn waves-effect waves-light search" type="submit" style="margin-top:20px; text-shadow: -1px -1px 1px #000;" name="action" ng-click="runSearchResult()">Search<i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  <div class="divider"></div>
+</div>
+
+  <div style="height: 405px; margin-left: 8%;">
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+          <p style="font-size:2em; color:white; -webkit-text-stroke: 1px grey;">{{slide.text}}</p>
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

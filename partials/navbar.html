@@ -1,0 +1,26 @@
+<div class=" nav navbar-fixed-top black">
+  <div class="coolTitle" style="background:url('/images/slides/banner.png') no-repeat right;"><img src="/images/slides/text.png" width="300px", height="50px">
+  </div>
+  <nav ng-controller="NavCtrl" class="#616161 grey darken-1 col s12 z-depth-4 pannel2" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle white hoverable" ng-init="navCollapsed = false" ng-click="navCollapsed = !navCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar black"></span>
+          <span class="icon-bar black"></span>
+          <span class="icon-bar black"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+        <ul class="nav navbar-nav navbar-right" style="text-shadow: -1px -1px 1px #000;">
+          <li ng-show="$parent.isLoggedIn"><a href="#/home"><i class="fa fa-home fa-4x" style="max-height:9px;"></i></a></li>
+          <li><a  ng-show="$parent.isLoggedIn" href="#/favorite"><h4>Favorites</h4></a></li>
+          <li><a  ng-show="!$parent.isLoggedIn" href="#/login"><h4>LogIn</h4></a>|</li>
+          <li><a  ng-show="$parent.isLoggedIn" ng-click="logOut()"><h4>Logout</h4></a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>
+  <hr>
+</div>
+
