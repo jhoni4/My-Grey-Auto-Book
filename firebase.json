@@ -4,7 +4,6 @@
   },
   "hosting": {
     "public": "public",
-    "rewrites": [
-    ],
+    "rewrites": [],
   },
 }
