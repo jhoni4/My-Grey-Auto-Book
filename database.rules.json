@@ -3,8 +3,7 @@
     ".read": true,
     ".write": true,
     "movies": {
-    	".indexOn": ["uid"]
-    	},
+      ".indexOn": ["uid"]
     }
   }
-
+}

@@ -13,8 +13,7 @@ app.controller("LoginCtrl", function($scope,  $window, AuthFactory)  {
       password: $scope.account.password
     })
     .then( (userData) => {
-      console.log("new user", userData);
-      // console.log("NEW USER CREATED!!!");
+      console.log("NEW USER CREATED!!!");
       $scope.logIn();
     }, (error) => {
       console.log(`Error creating user: ${error}`);

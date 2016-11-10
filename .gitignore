@@ -11,3 +11,4 @@ lib/src
 lib/.sass-cache
 .DS_Store
 app/values/fb-cred.js
+public/app/values/fb-cred.js

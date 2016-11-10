@@ -8,7 +8,7 @@ app.controller("TopCtrl", function ($scope, $location, $window, AuthFactory) {
     if (user) {
       currentUser = user.uid;
       $scope.isLoggedIn = true;
-      console.log("Current user is logged in?", user.uid);
+      // console.log("Current user is logged in?", user.uid);
     }else {
       currentUser = null;
       $scope.isLoggedIn = false;
@@ -25,7 +25,7 @@ app.controller("TopCtrl", function ($scope, $location, $window, AuthFactory) {
     console.log("you clicked logOut");
     AuthFactory.logoutUser()
     .then( (data) => {
-      console.log("you are logged out, man", data);
+      // console.log("you are logged out, man", data);
     });
   };
 
