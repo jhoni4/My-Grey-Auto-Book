@@ -1,11 +1,16 @@
 'use strict';
 
 app.controller("FavoriteCtrl", function($scope, SearchFactory)  {
-  // $scope.favorites.ratings = [];
+
   $scope.isCollapsed = true;
   $scope.isCollapsedHorizontal = true;
   $scope.isCollapsedHorizontal1 = true;
 
+
+
+/////SAVED CARS GETTER//////
+/////SAVED CARS GETTER//////
+/////SAVED CARS GETTER//////
 
   SearchFactory.getFavoriteFromFb()
   .then( (favObj) => {
@@ -18,30 +23,33 @@ app.controller("FavoriteCtrl", function($scope, SearchFactory)  {
   });
 
 
+
+/////AVERAGE SCORE POINT CALCULATOR////////
+/////AVERAGE SCORE POINT CALCULATOR////////
+/////AVERAGE SCORE POINT CALCULATOR////////
+
  $scope.calculateAverage = function(MyData){
-  // console.log("MyData", MyData);
     var sum = 0;
     sum += parseInt(MyData.comfortScore+MyData.funToDriveScore+MyData.interiorScore+MyData.performanceScore+MyData.valueScore, 10); //don't forget to add the base
-   // console.log("sum", sum);
     var avg = sum/5;
-   // console.log("avg", avg);
     return avg;
  };
 
 
 
 
+/////DELETE A CAR///////
+/////DELETE A CAR///////
+/////DELETE A CAR///////
 
   $scope.deleteCar = (carId) => {
     console.log("carId", carId);
-    // console.log("carId", carId);
     SearchFactory.deleteFavFromFirebase(carId)
     .then( (response) => {
       SearchFactory.getFavoriteFromFb()
       .then( (favObj) => {
         $scope.favorites = favObj;
         $scope.favorites.ratings = favObj.ratings;
-        // console.log("favorites", favorites);
       });
     });
 
@@ -49,18 +57,17 @@ app.controller("FavoriteCtrl", function($scope, SearchFactory)  {
 
   $scope.editedCar = {};
 
+
+
+////COMMENT SAVE BUTTON///////
+////COMMENT SAVE BUTTON///////
+////COMMENT SAVE BUTTON///////
+
   $scope.saveComment = (carId, editedCar) => {
-    // $scope.isCollapsedHorizontal = true;
-      // console.log("carId", carId);
-      // console.log("$scope.editedCar", $scope.editedCar);
-      // console.log("$scope.editedCar.comment", $scope.editedCar.comment);
      SearchFactory.getSingleCarFromFb(carId)
      .then( (favObj) => {
-      // console.log("favObj", favObj);
       favObj.comment = $scope.editedCar.comment;
       $scope.editedCar = favObj;
-    // console.log("favObj.comment", favObj.comment);
-    // console.log("$scope.editedCar", $scope.editedCar);
     SearchFactory.updateCar(carId, $scope.editedCar)
     .then( (data) => {
       SearchFactory.getFavoriteFromFb()

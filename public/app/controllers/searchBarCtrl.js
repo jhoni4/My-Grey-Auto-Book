@@ -3,7 +3,6 @@
 app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location) {
 
   $scope.xx = [];
-  // $scope.pp = [];
 
 
 
@@ -16,12 +15,10 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
     $scope.xx.model = $scope.cars.makes[$scope.selectedCarMake].models[$scope.selectedCarModel].name;
     $scope.xx.year = $scope.carYears[$scope.selectedCarYear].year;
     $scope.xx.style = $scope.selectedCarStyle;
-    // console.log("TEST FOR XX", $scope.xx);
     SearchFactory.getSearchResult($scope.xx)
     .then( (searchObj) => {
       $scope.item = searchObj;
       SearchFactory.addItems(searchObj);
-      // $scope.getPhoto($scope.xx);
       $location.url("/result");
     });
 
@@ -50,7 +47,6 @@ app.controller("SearchBarCtrl", function($scope, $http, SearchFactory, $location
     url: '/data/list2.json',
   }).success(function (result) {
     $scope.cars = result;
-      // console.log("result", result);
   });
 
 

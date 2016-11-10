@@ -9,7 +9,11 @@ let isAuth = (AuthFactory) => new Promise( (resolve, reject) => {
         console.log("Authenticated user , Go a head");
         resolve();
     }else {
+<<<<<<< HEAD
         console.log("Not Authenticated user , Go a away");
+=======
+        console.log("Not Authenticated user , PLEASE TRY AGAIN");
+>>>>>>> 9fe0d9a438f27614d7faaf7b07745314cfcac359
         reject ();
     }
 });

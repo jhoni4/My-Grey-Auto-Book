@@ -12,11 +12,6 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
 
 
   $scope.item = SearchFactory.getItems();
-  // console.log("$scope.item", $scope.item);
-  // console.log("$scope.pics", $scope.pics);
-  //now we have  $scope.item
-  //now we have  $scope.pics
-  // console.log("$scope.pic", $scope.pic);
   $scope.zz.make = $scope.item.make.name;
   $scope.zz.model = $scope.item.model.name;
   $scope.zz.year = $scope.item.year.year;
@@ -28,15 +23,12 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   //////GET PHOTO////////////
 
   $scope.getPhoto = () => {
-    // console.log("$scope.ZZZZ", $scope.zz);
     SearchFactory.getPicture($scope.zz)
     .then( (imgSearch) => {
-      // console.log("imgSearch", imgSearch);
       $scope.photo1.cool1 = "http://media.ed.edmunds-media.com" + imgSearch.photos[0].sources[0].link.href;
       $scope.photo1.cool2 = "http://media.ed.edmunds-media.com" + imgSearch.photos[1].sources[0].link.href;
       $scope.photo1.cool3 = "http://media.ed.edmunds-media.com" + imgSearch.photos[2].sources[0].link.href;
-      // console.log("TEST FOR photo1", $scope.photo1);
-      // console.log("COOL1", imgSearch.photos[0].sources[0].link.href);
+
 
     });
   };
@@ -47,9 +39,6 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   };
 
   $scope.getPhoto();
-
-  // console.log("$scope.photo1", $scope.photo1);
-  // console.log("$scope.photo1.cool1", $scope.photo1.cool1);
 
 
    /////// //GEO LOCATION //////////////////////////////////
@@ -144,10 +133,9 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
     $scope.newSearch.ratings.funToDriveScore = searchObj.ratings[4].score;
     $scope.newSearch.ratings.funToDriveSummary = searchObj.ratings[4].summary;
     $scope.newSearch.summary = searchObj.summary;
-    // console.log("newSearch", $scope.newSearch);
     SearchFactory.postSearchToFb($scope.newSearch)
     .then(
-      (data) => console.log('search saved!', $scope.newSearch),
+      (data) => console.log('search saved!'),
       (error) => console.log(error)
     );
   };
@@ -201,7 +189,6 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
 
 
   $scope.createChart = (searchObj) => {
-    // console.log("am clicked", searchObj);
     $scope.myDataSource.chart.caption = searchObj.make.name;
     $scope.myDataSource.chart.subCaption = searchObj.model.name;
     $scope.myDataSource.data[0].value = searchObj.ratings[0].score;
@@ -209,7 +196,6 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
     $scope.myDataSource.data[2].value = searchObj.ratings[2].score;
     $scope.myDataSource.data[3].value = searchObj.ratings[3].score;
     $scope.myDataSource.data[4].value = searchObj.ratings[4].score;
-    // console.log("CHART ITEM", $scope.myDataSource.chart.caption);
   };
 
    $scope.createChart($scope.item);
@@ -225,7 +211,6 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   SearchFactory.getDealership($scope.zz)
   .then ( (kk) => {
     $scope.Dealers = kk;
-  console.log("$scope.Dealers", $scope.Dealers);
   });
 
 
