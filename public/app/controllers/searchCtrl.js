@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeout, $q, $http) {
+app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeout, $q, $http){
 
   $scope.isCollapsed = false;
   $scope.isCollapsedHorizontal = true;
@@ -204,7 +204,7 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
 
 
 
-////// DEALERS ADDRESSS////////////
+  ////// DEALERS ADDRESSS////////////
   ////// DEALERS ADDRESSS////////////
   ////// DEALERS ADDRESSS////////////
 
@@ -212,9 +212,6 @@ app.controller("SearchResultCtrl", function($scope, SearchFactory, Flash, $timeo
   .then ( (kk) => {
     $scope.Dealers = kk;
   });
-
-
-
 
 
 
