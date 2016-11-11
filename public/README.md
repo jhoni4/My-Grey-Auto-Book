@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-# Ratings
-capstone 1
-=======
 # My Grey Auto Book
-capstone 1
+Front End capstone 1
 
 This app is created for car buyers .....
 one of the major causes for loss of human life is car accident and
@@ -38,4 +34,3 @@ and finally you get to compare your list of search using bar chart and many more
 
 
 
->>>>>>> 9fe0d9a438f27614d7faaf7b07745314cfcac359
