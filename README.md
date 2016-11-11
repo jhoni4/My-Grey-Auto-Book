@@ -1,5 +1,20 @@
 # My Grey Auto Book
 capstone 1
+This app is created for car buyers .....
+one of the major causes for loss of human life is car accident and
+one of the major cause of car accident is safety of the vehicle,
+so knowing the safety rate of your vehicle before you decide to buy it is very important.
+According to iihs there are two aspects of vehicle safety ratings
+1. crash worthiness — how well a vehicle protects its occupants in a crash — and crash avoidance and
+2.mitigation — technology that can prevent a crash or lessen its severity.
+
+this app will give you reliable info about the car
+.performance
+.Value
+.interior
+.comfort
+.funToDrive
+ratings and summery details.
 
 Functionality:
 user needs to login using email and password
@@ -16,18 +31,4 @@ and finally you get to compare your list of search using bar chart and many more
 
 
 
-This app is created for car buyers .....
-one of the major causes for loss of human life is car accident and
-one of the major cause of car accident is safety of the vehicle,
-so knowing the safety rate of your vehicle before you decide to buy it is very important.
-According to iihs there are two aspects of vehicle safety ratings
-1. crash worthiness — how well a vehicle protects its occupants in a crash — and crash avoidance and
-2.mitigation — technology that can prevent a crash or lessen its severity.
 
-this app will give you reliable info about the car
-.performance
-.Value
-.interior
-.comfort
-.funToDrive
-ratings and summery details.
